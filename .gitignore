@@ -1,0 +1,8 @@
+fish/.config/fish/fish_variables
+functions
+__pycache__
+xmonad-x86_64-linux
+xmonad.errors
+xmonad.hi
+xmonad.o
+session

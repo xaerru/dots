@@ -1,0 +1,120 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC2034
+# This issue is ignored because it is part of a larger file that calls upon all variables listed
+
+# To edit this file copy it to `${HOME}/.config/dmscripts/config`
+# `cp /etc/dmscripts/config ${HOME}/.config/dmscripts/config`
+
+# Defined variables, modify anything in quotes to your prefered software
+DMEDITOR="nvim"
+DMBROWSER="qutebrowser"
+DMBROWSER_SHOW=1
+TERMINAL="alacritty"
+DMTERM="alacritty -e"
+SCROTDIR="${HOME}/Screenshots"
+DMWALLPAPERDIR="${HOME}/Pictures/Wallpapers"
+LOCKER='betterlockscreen -l'
+NOTIFIER='notify-send'
+DMHUB_DIR="${HOME}/git"
+soundDir="${HOME}/.config/dmscripts/dmsounds"
+
+# dmconf config
+
+# An array of options to choose.
+# You can edit this list to add/remove config files.
+declare -A dmconf_options
+dmconf_options[alacritty]="$HOME/.config/alacritty/alacritty.yml"
+dmconf_options[bash]="$HOME/.bashrc"
+dmconf_options[ranger]="$HOME/.config/ranger/rc.conf"
+dmconf_options[dunst]="$HOME/.config/dunst/dunstrc"
+dmconf_options[fish]="$HOME/.config/fish/config.fish"
+dmconf_options[i3]="$HOME/.config/i3/config"
+dmconf_options[neovim]="$HOME/.config/nvim/init.vim"
+dmconf_options[picom]="$HOME/.config/picom/picom.conf"
+dmconf_options[qutebrowser bookmarks]="$HOME/.config/qutebrowser/bookmarks/urls"
+dmconf_options[qutebrowser quickmarks]="$HOME/.config/qutebrowser/quickmarks"
+dmconf_options[qutebrowser config.py]="$HOME/.config/qutebrowser/config.py"
+dmconf_options[ssh]="$HOME/.ssh/config"
+dmconf_options[vim]="$HOME/.vimrc"
+dmconf_options[xmobar]="$HOME/.config/xmobar/xmobar.config"
+dmconf_options[xmonad]="$HOME/.xmonad/xmonad.hs"
+dmconf_options[xinitrc]="$HOME/.xinitrc"
+dmconf_options[xresources]="$HOME/.Xresources"
+dmconf_options[zsh]="$HOME/.zshrc"
+
+# dmred config
+
+# Ensure you have a quit option at the bottom
+declare -a subreddit_list=(
+"r/archlinux"
+"r/india"
+"r/memes"
+"r/ksi"
+"r/wholesomememes"
+"r/unixporn"
+"r/vim"
+"Quit"
+)
+
+# Search engine config 
+
+declare -A search_options
+# Syntax:
+# search_options[name]="https://www.example.com/search?q="
+
+# Search Engines
+search_options[bing]="https://www.bing.com/search?q="
+search_options[duckduckgo]="https://duckduckgo.com/?q="
+search_options[gemini search \(https\)]="https://portal.mozz.us/gemini/geminispace.info/search%3F"
+search_options[google]="https://www.google.com/search?q="
+search_options[qwant]="https://www.qwant.com/?q="
+search_options[swisscows]="https://swisscows.com/web?query="
+search_options[yandex]="https://yandex.com/search/?text="
+# Information/News
+search_options[bbcnews]="https://www.bbc.co.uk/search?q="
+search_options[cnn]="https://www.cnn.com/search?q="
+search_options[googlenews]="https://news.google.com/search?q="
+search_options[wikipedia]="https://en.wikipedia.org/wiki/"
+search_options[wiktionary]="https://en.wiktionary.org/wiki/"
+# Social Media
+search_options[reddit]="https://www.reddit.com/search/?q="
+search_options[odysee]="https://odysee.com/$/search?q="
+search_options[youtube]="https://www.youtube.com/results?search_query="
+# Online Shopping
+search_options[amazon]="https://www.amazon.com/s?k="
+search_options[craigslist]="https://www.craigslist.org/search/sss?query="
+search_options[ebay]="https://www.ebay.com/sch/i.html?&_nkw="
+search_options[gumtree]="https://www.gumtree.com/search?search_category=all&q="
+# Linux
+search_options[archaur]="https://aur.archlinux.org/packages/?O=0&K="
+search_options[archpkg]="https://archlinux.org/packages/?sort=&q="
+search_options[archwiki]="https://wiki.archlinux.org/index.php?search="
+search_options[debianpkg]="https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords="
+# Development
+search_options[github]="https://github.com/search?q="
+search_options[gitlab]="https://gitlab.com/search?search="
+search_options[googleOpenSource]="https://opensource.google/projects/search?q="
+search_options[sourceforge]="https://sourceforge.net/directory/?q="
+search_options[stackoverflow]="https://stackoverflow.com/search?q="
+# Etc
+
+# dmyoutube config
+
+# Think of these as your "subscribed channels", name the channel in the square brackets then put the channel URL in the quotation marks
+# Syntax: channels[name]="https://www.youtube.com/link/to/channel"
+declare -A channels
+channels[sidemen]="https://www.youtube.com/c/sidemen"
+
+# dmcolors config
+
+declare -A colors
+colors[black]="#282a36"
+colors[red]="#ff5555"
+colors[green]="#5af78e"
+colors[yellow]="#f1fa8c"
+colors[blue]="#57c7ff"
+colors[magenta]="#ff6ac1"
+colors[cyan]="#8be9fd"
+colors[white]="#f1f1f0"
+colors[orange]="#ffb86c"
+colors[purple]="#bd9cf9"
