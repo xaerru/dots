@@ -84,8 +84,10 @@ let g:which_key_map.d = {
 
 let g:which_key_map.g = {
       \ 'name' : '+git',
-      \ 'j' : 'Next Change'    ,
-      \ 'k' : 'Previous Change'    ,
+      \ 'j' : 'NextChange'    ,
+      \ 'k' : 'PreviousChange'    ,
+      \ 'b' : 'WebBrowse'    ,
+      \ 'c' : 'CommitBrowse'    ,
       \ }
 " Define a separator
 let g:which_key_sep = '→'
