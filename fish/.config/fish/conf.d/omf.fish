@@ -19,6 +19,7 @@ export MANPAGER="nvim -c 'set ft=man' -"
 export SHELL=/usr/bin/fish
 
 # Alias
+alias v="nvim"
 alias c="clear"
 alias upd="sudo pacman -Syu && yay -Syu"
 alias q="exit"
