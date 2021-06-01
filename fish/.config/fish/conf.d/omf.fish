@@ -17,6 +17,7 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR=nvim
 export MANPAGER="nvim -c 'set ft=man' -"
 export SHELL=/usr/bin/fish
+export TERM=xterm-256color
 
 # Alias
 alias v="nvim"

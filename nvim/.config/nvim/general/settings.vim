@@ -39,7 +39,7 @@ set clipboard=unnamedplus               " Copy paste between vim and everything 
 set pastetoggle=<F2>                    " Set the paste toggle to be (<F2>)
 set linebreak                           " Line breaks on whitespaces
 set scrolloff=5                         " 5 Lines above/below the cursor while scrolling
-set termguicolors                       " Set termguicolors
+"set termguicolors                       " Set termguicolors
 set inccommand=nosplit                  " Replace live
 set guifont=JetBrains\ Mono\ Nerd\ Font
 set list lcs=tab:┆·,trail:·,precedes:,extends:
