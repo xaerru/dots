@@ -99,7 +99,7 @@ myEditor :: String
 myEditor = myTerminal ++ " -e nvim "    -- Sets nvim as editor
 
 myBorderWidth :: Dimension
-myBorderWidth = 4           -- Sets border width for windows
+myBorderWidth = 2           -- Sets border width for windows
 
 myNormColor :: String
 myNormColor   = "#2E3440"   -- Border color of normal windows
