@@ -112,7 +112,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "picom -f --experimental-backend -b &"
+    spawnOnce "picom --experimental-backend -b &"
     spawnOnce "dunst"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x2E3440  --height 22 &"
     spawnOnce "/home/grvxs/.xmonad/wallpaper.sh"
