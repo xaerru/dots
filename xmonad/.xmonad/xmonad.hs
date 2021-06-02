@@ -1,4 +1,4 @@
-g g- Base
+  -- Base
 import           System.Directory
 import           System.Exit                         (exitSuccess)
 import           System.IO                           (hPutStrLn)
