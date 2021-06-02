@@ -1,4 +1,4 @@
-  -- Base
+g g- Base
 import           System.Directory
 import           System.Exit                         (exitSuccess)
 import           System.IO                           (hPutStrLn)
@@ -306,7 +306,7 @@ myKeys =
         , ("M-p y", spawn "dmyoutube")-- youtube
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn myTerminal)
+        , ("M-<Return>", spawn (myTerminal ++ " -e tmux a"))
         , ("M-i", spawn myBrowser)
         , ("M-b", spawn "brave")
         , ("M-S-h", spawn (myTerminal ++ " -e htop"))
