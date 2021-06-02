@@ -306,7 +306,7 @@ myKeys =
         , ("M-p y", spawn "dmyoutube")-- youtube
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn (myTerminal ++ " -e tmux a"))
+        , ("M-<Return>", spawn (myTerminal ++ " -e tmux"))
         , ("M-i", spawn myBrowser)
         , ("M-b", spawn "brave")
         , ("M-S-h", spawn (myTerminal ++ " -e htop"))
