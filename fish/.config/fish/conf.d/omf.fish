@@ -22,7 +22,7 @@ export TERM=xterm-256color
 # Alias
 alias v="nvim"
 alias c="clear"
-alias upd="sudo pacman -Syu && paru -Syu"
+alias upd="sudo pacman -Syu && paru"
 alias q="exit"
 alias ls="exa --icons --group-directories-first"
 alias cat='bat'
