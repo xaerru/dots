@@ -7,7 +7,7 @@
 
 # Defined variables, modify anything in quotes to your prefered software
 DMEDITOR="nvim"
-DMBROWSER="qutebrowser"
+DMBROWSER="brave"
 DMBROWSER_SHOW=1
 TERMINAL="alacritty"
 DMTERM="alacritty -e"
