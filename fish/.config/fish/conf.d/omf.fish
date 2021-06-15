@@ -51,5 +51,6 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 # the terminal rickroll
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias ..="cd .."
+alias ...="cd ../.."
 
 # cat ~/.config/name.txt | awk -v col=$COLUMNS '{n_blank=(col-length($0))/2 ; printf "%-*s",n_blank," " ;print $0}'
