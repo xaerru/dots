@@ -279,7 +279,7 @@ myKeys =
         , ("M-M1-e", io exitSuccess)              -- Quits xmonad
 
     -- Run Prompt
-        , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -l 7 -h 22") -- Dmenu
+        , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -h 24") -- Dmenu
 
     -- Other Dmenu Prompts
     -- In Xmonad and many tiling window managers, M-p is the default keybinding to
