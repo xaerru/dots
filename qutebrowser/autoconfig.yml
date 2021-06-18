@@ -6,13 +6,7 @@
 
 config_version: 2
 settings:
-  completion.web_history.max_items:
-    global: 10
-  content.notifications.enabled:
-    https://kite.zerodha.com: false
-    https://web.telegram.org: false
-    https://www.youtube.com: false
   statusbar.show:
     global: always
   tabs.show:
-    global: always
+    global: never

@@ -1,6 +1,24 @@
 config.load_autoconfig()
 
-config.source('themes/nord-qutebrowser.py')
+
+c.content.blocking.adblock.lists = [
+        "https://easylist.to/easylist/easylist.txt",
+        "https://easylist.to/easylist/easyprivacy.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/legacy.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
+        "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext&_=223428",
+        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt",
+        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
+        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt",
+        "https://curben.gitlab.io/malware-filter/urlhaus-filter-online.txt",
+        "https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoMirror/NanoDefender.txt",
+        "https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt"]
+
+# config.source('themes/nord-qutebrowser.py')
 c.tabs.last_close="close"
 c.scrolling.smooth=True
 
@@ -223,21 +241,7 @@ config.bind('<Space>l', ':hint links spawn --detach mpv --fs {hint-url}')
 
 # adblock
 
-c.content.blocking.adblock.lists = [
-        "https://easylist.to/easylist/easylist.txt",
-        "https://easylist.to/easylist/easyprivacy.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/filters-2020.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/legacy.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/badware.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/privacy.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/resource-abuse.txt",
-        "https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&showintro=1&mimetype=plaintext&_=223428",
-        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-lists/brave-social.txt",
-        "https://raw.githubusercontent.com/uBlockOrigin/uAssets/master/filters/unbreak.txt",
-        "https://raw.githubusercontent.com/brave/adblock-lists/master/brave-unbreak.txt",
-        "https://curben.gitlab.io/malware-filter/urlhaus-filter-online.txt",
-        "https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoMirror/NanoDefender.txt",
-        "https://gitcdn.xyz/repo/NanoAdblocker/NanoFilters/master/NanoFilters/NanoBase.txt"]
 
 c.content.pdfjs = True
+
+config.source('nord.py')

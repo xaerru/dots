@@ -149,7 +149,7 @@ c.colors.messages.info.border = nord['nord8']
 
 ## Foreground color an info message.
 ## Type: QssColor
-c.colors.messages.info.fg = nord['nord5']
+c.colors.messages.info.fg = nord['nord0']
 
 ## Background color of a warning message.
 ## Type: QssColor
@@ -213,7 +213,7 @@ c.colors.statusbar.command.private.fg = nord['nord5']
 
 ## Background color of the statusbar in insert mode.
 ## Type: QssColor
-c.colors.statusbar.insert.bg = nord['nord10']
+c.colors.statusbar.insert.bg = nord['nord14']
 
 ## Foreground color of the statusbar in insert mode.
 ## Type: QssColor
