@@ -31,6 +31,7 @@ import           Data.Tree
 import           XMonad.Hooks.DynamicLog             (PP (..), dynamicLogWithPP,
                                                       shorten, wrap,
                                                       xmobarColor, xmobarPP)
+import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
                                                       avoidStruts,
                                                       docksEventHook,
@@ -50,7 +51,6 @@ import           XMonad.Layout.Tabbed
 import           XMonad.Layout.ThreeColumns
 
     -- Layouts modifiers
-import           XMonad.Layout.Fullscreen
 import           XMonad.Layout.LayoutModifier
 import           XMonad.Layout.LimitWindows          (decreaseLimit,
                                                       increaseLimit,
@@ -263,7 +263,7 @@ myManageHook = composeAll
      , className =? "splash"            --> doFloat
      , className =? "toolbar"           --> doFloat
      , className =? "virt-manager"      --> doFloat
-     --, isFullscreen                     --> doFullFloat
+     , isFullscreen                     --> doFullFloat
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
      , className =? "Spotify"           --> doShift ( myWorkspaces !! 5 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
@@ -389,7 +389,7 @@ myKeys =
 workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
 
 defaults xmproc0 = def
-        { manageHook         = myManageHook <+> manageDocks <+> fullscreenManageHook
+        { manageHook         = myManageHook <+> manageDocks
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
         , modMask            = myModMask
         , terminal           = myTerminal
@@ -421,4 +421,4 @@ main = do
     -- Launching xmobar.
     xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar.config"
     -- the xmonad, ya know...what the WM is named after!
-    xmonad $ fullscreenSupport $ defaults xmproc0
+    xmonad $ ewmh $ defaults xmproc0
