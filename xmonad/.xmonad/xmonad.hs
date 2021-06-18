@@ -250,7 +250,7 @@ myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange $ T.togg
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 --myWorkspaces = map show [1..9]
-myWorkspaces = ["dev", "web", "prac", "sys", "chat", "mus", "sch", "vir", "soc"]
+myWorkspaces = ["dev", "web", "test", "sys", "chat", "mus", "sch", "vir", "soc"]
 myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -273,7 +273,7 @@ myManageHook = composeAll
      , className =? "splash"            --> doFloat
      , className =? "toolbar"           --> doFloat
      , className =? "virt-manager"      --> doFloat
-     , isFullscreen                     --> doFullFloat
+     --, isFullscreen                     --> doFullFloat
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
      , className =? "Spotify"           --> doShift ( myWorkspaces !! 5 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
