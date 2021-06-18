@@ -95,7 +95,6 @@ myEmacs :: String
 myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
 
 myEditor :: String
---myEditor = "emacsclient -c -a 'emacs' "  -- Sets emacs as editor
 myEditor = myTerminal ++ " -e nvim "    -- Sets nvim as editor
 
 myBorderWidth :: Dimension
@@ -120,21 +119,12 @@ myStartupHook = do
 
 myScratchPads :: [NamedScratchpad]
 myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
-                , NS "mocp" spawnMocp findMocp manageMocp
                 , NS "calculator" spawnCalc findCalc manageCalc
                 ]
   where
     spawnTerm  = myTerminal ++ " -t scratchpad"
     findTerm   = title =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
-               where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
-    spawnMocp  = myTerminal ++ " -t mocp -e mocp"
-    findMocp   = title =? "mocp"
-    manageMocp = customFloating $ W.RationalRect l t w h
                where
                  h = 0.9
                  w = 0.9
@@ -379,7 +369,6 @@ myKeys =
     -- When you toggle them to show, it brings them to your current workspace.
     -- Toggle them to hide and it sends them back to hidden workspace (NSP).
         , ("C-s t", namedScratchpadAction myScratchPads "terminal")
-        , ("C-s m", namedScratchpadAction myScratchPads "mocp")
         , ("C-s c", namedScratchpadAction myScratchPads "calculator")
 
     -- Multimedia Keys
@@ -402,10 +391,6 @@ workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView 
 defaults xmproc0 = def
         { manageHook         = myManageHook <+> manageDocks <+> fullscreenManageHook
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
-                               -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
-                               -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
-                               -- it adds a border around the window if screen does not have focus. So, my solution
-                               -- is to use a keybinding to toggle fullscreen noborders instead.  (M-<Space>)
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
