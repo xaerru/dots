@@ -31,7 +31,6 @@ import           Data.Tree
 import           XMonad.Hooks.DynamicLog             (PP (..), dynamicLogWithPP,
                                                       shorten, wrap,
                                                       xmobarColor, xmobarPP)
-import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
                                                       avoidStruts,
                                                       docksEventHook,
@@ -51,6 +50,7 @@ import           XMonad.Layout.Tabbed
 import           XMonad.Layout.ThreeColumns
 
     -- Layouts modifiers
+import           XMonad.Layout.Fullscreen
 import           XMonad.Layout.LayoutModifier
 import           XMonad.Layout.LimitWindows          (decreaseLimit,
                                                       increaseLimit,
@@ -400,7 +400,7 @@ myKeys =
 workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
 
 defaults xmproc0 = def
-        { manageHook         = myManageHook <+> manageDocks
+        { manageHook         = myManageHook <+> manageDocks <+> fullscreenManageHook
         , handleEventHook    = docksEventHook <+> fullscreenEventHook
                                -- Uncomment this line to enable fullscreen support on things like YouTube/Netflix.
                                -- This works perfect on SINGLE monitor systems. On multi-monitor systems,
@@ -436,4 +436,4 @@ main = do
     -- Launching three instances of xmobar on their monitors.
     xmproc0 <- spawnPipe "$HOME/.local/bin/xmobar $HOME/.config/xmobar/xmobar.config"
     -- the xmonad, ya know...what the WM is named after!
-    xmonad $ ewmh $ defaults xmproc0
+    xmonad $ fullscreenSupport $ defaults xmproc0
