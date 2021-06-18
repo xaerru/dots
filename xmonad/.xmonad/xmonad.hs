@@ -433,7 +433,7 @@ defaults xmproc0 = def
 
 main :: IO ()
 main = do
-    -- Launching three instances of xmobar on their monitors.
-    xmproc0 <- spawnPipe "$HOME/.local/bin/xmobar $HOME/.config/xmobar/xmobar.config"
+    -- Launching xmobar.
+    xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar.config"
     -- the xmonad, ya know...what the WM is named after!
     xmonad $ fullscreenSupport $ defaults xmproc0
