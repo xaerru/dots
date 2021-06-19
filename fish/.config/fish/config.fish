@@ -1,5 +1,6 @@
 set fish_greeting
 bind -M insert -m default jk backward-char force-repaint
+bind -M insert -m default kj backward-char force-repaint
 fish_vi_key_bindings
 
 function fish_mode_prompt
