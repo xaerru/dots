@@ -24,6 +24,7 @@ Plug 'vim-syntastic/syntastic' " Syntax linting
 Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'preservim/nerdcommenter' " Commenter
 Plug 'sbdchd/neoformat' " Code formatting
+Plug 'ticki/rust-cute-vim' " Rust ligatures
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
