@@ -22,8 +22,6 @@ export TERM=xterm-256color
 # Alias
 alias v="nvim"
 alias c="clear"
-alias upd="paru"
-alias q="exit"
 alias ls="exa --icons --group-directories-first"
 alias cat='bat'
 # Changing "ls" to "exa"
@@ -33,9 +31,6 @@ alias ll='exa -l --color=always --group-directories-first --icons'  # long forma
 alias l.='exa -a | rg "^\."'
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist-arch"
-alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist-arch"
-alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist-arch"
-alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist-arch"
 # Trash instead of rm
 alias rm="trash"
 # Colorize grep output (good for log files)
