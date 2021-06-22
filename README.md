@@ -12,7 +12,7 @@ Terminal: [Alacritty](https://github.com/alacritty/alacritty)
 
 Shell: [Fish](https://fishshell.com/)
 
-Browser: [qutebrowser](https://qutebrowser.org/)
+Browser: [Qutebrowser](https://qutebrowser.org/)
 
 Editor: [Neovim](https://neovim.io/)
 
