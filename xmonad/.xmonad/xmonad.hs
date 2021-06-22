@@ -403,7 +403,7 @@ defaults xmproc0 = def
                       (namedScratchpadFilterOutWorkspacePP
                          $ xmobarPP
                              {ppOutput = hPutStrLn xmproc0,
-                              ppCurrent = xmobarColor "#A3BE8C" "" . wrap "[" "]",
+                              ppCurrent = xmobarColor "#A3BE8C" "" . wrap "[" "]" . clickable,
                               ppVisible = xmobarColor "#A3BE8C" "" . clickable,
                               ppHidden = xmobarColor "#81A1C1" "" . wrap "*" "" . clickable,
                               ppHiddenNoWindows = xmobarColor "#B48EAD" "" . clickable,
