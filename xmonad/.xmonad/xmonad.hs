@@ -113,7 +113,7 @@ myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "picom --experimental-backend -b -cC &"
     spawnOnce "dunst"
-    spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x2E3440  --height 22 &"
+    spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
     spawnOnce "/home/grvxs/.xmonad/scripts/wallpaper.sh"
     setWMName "LG3D"
 
