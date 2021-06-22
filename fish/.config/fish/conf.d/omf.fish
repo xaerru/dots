@@ -22,6 +22,7 @@ export TERM=xterm-256color
 # Alias
 alias v="nvim"
 alias c="clear"
+alias cdc="cd && clear"
 alias ls="exa --icons --group-directories-first"
 alias cat='bat'
 # Changing "ls" to "exa"
