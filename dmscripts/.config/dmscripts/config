@@ -7,12 +7,12 @@
 
 # Defined variables, modify anything in quotes to your prefered software
 DMEDITOR="nvim"
-DMBROWSER="brave"
+DMBROWSER="qutebrowser"
 DMBROWSER_SHOW=1
 TERMINAL="alacritty"
 DMTERM="alacritty -e"
 SCROTDIR="${HOME}/Screenshots"
-DMWALLPAPERDIR="${HOME}/Pictures/Wallpapers"
+DMWALLPAPERDIR="${HOME}/misc/wallpapers"
 LOCKER='betterlockscreen -l'
 NOTIFIER='notify-send'
 DMHUB_DIR="${HOME}/git"
