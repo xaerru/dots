@@ -373,6 +373,7 @@ myKeys =
 
     -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn "playerctl play-pause")
+        , ("M-s p", spawn "playerctl play-pause")
         , ("<XF86AudioPrev>", spawn "playerctl previous")
         , ("<XF86AudioNext>", spawn "playerctl next")
         , ("<XF86AudioMute>", spawn " pactl set-sink-mute 0 toggle")
