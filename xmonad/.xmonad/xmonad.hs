@@ -114,7 +114,7 @@ myStartupHook = do
     spawnOnce "picom --experimental-backend -b -cC &"
     spawnOnce "dunst"
     spawnOnce "trayer --edge top --align right --widthtype request --padding 6 --SetDockType true --SetPartialStrut true --expand true --transparent true --alpha 0 --tint 0x2E3440  --height 22 &"
-    spawnOnce "/home/grvxs/.xmonad/wallpaper.sh"
+    spawnOnce "/home/grvxs/.xmonad/scripts/wallpaper.sh"
     setWMName "LG3D"
 
 myScratchPads :: [NamedScratchpad]
@@ -296,7 +296,7 @@ myKeys =
         , ("M-p y", spawn "dmyoutube")-- youtube
 
     -- Useful programs to have a keybinding for launch
-        , ("M-<Return>", spawn "$HOME/.xmonad/terminal.sh")
+        , ("M-<Return>", spawn "$HOME/.xmonad/scripts/terminal.sh")
         , ("M-\\", spawn myTerminal)
         , ("M-i", spawn myBrowser)
         , ("M-b", spawn "brave")
