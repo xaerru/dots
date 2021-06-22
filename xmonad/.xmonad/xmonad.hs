@@ -379,7 +379,7 @@ myKeys =
         , ("<XF86AudioNext>", spawn "playerctl next")
         , ("M-s n", spawn "playerctl next")
         , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-        , ("M-s n", spawn "pactl set-sink-mute 0 toggle")
+        , ("M-s m", spawn "pactl set-sink-mute 0 toggle")
         , ("<XF86AudioLowerVolume>", spawn "pactl -- set-sink-volume 0 -5%")
         , ("M-s d", spawn "pactl -- set-sink-volume 0 -5%")
         , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 0 +5%")
