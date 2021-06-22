@@ -47,7 +47,6 @@ dmconf_options[zsh]="$HOME/.zshrc"
 # Ensure you have a quit option at the bottom
 declare -a subreddit_list=(
 "r/archlinux"
-"r/india"
 "r/memes"
 "r/ksi"
 "r/wholesomememes"
