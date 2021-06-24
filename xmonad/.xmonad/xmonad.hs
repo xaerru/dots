@@ -115,7 +115,7 @@ myStartupHook = do
     spawnOnce "picom --experimental-backend -b -cC &"
     spawnOnce "dunst"
     spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
-    spawnOnce "$HOME/.xmonad/scripts/wallpaper.sh"
+    spawnOnce " hsetroot -solid '#4C566A'"
     setWMName "LG3D"
 
 myScratchPads :: [NamedScratchpad]
