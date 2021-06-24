@@ -31,6 +31,7 @@ import           Data.Tree
 import           XMonad.Hooks.DynamicLog             (PP (..), dynamicLogWithPP,
                                                       shorten, wrap,
                                                       xmobarColor, xmobarPP)
+import           XMonad.Hooks.DynamicProperty
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
                                                       avoidStruts,
@@ -246,6 +247,9 @@ myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
+myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
+    [ className =? "Spotify"            --> doShift (myWorkspaces !! 5)]
+
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
      -- 'doFloat' forces a window to float.  Useful for dialog boxes and such.
@@ -264,8 +268,8 @@ myManageHook = composeAll
      , className =? "toolbar"           --> doFloat
      , className =? "virt-manager"      --> doFloat
      , isFullscreen                     --> doFullFloat
+     , className =? "qutebrowser"       --> doShift ( myWorkspaces !! 1 )
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
-     , className =? "Spotify"           --> doShift ( myWorkspaces !! 5 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"      --> doShift ( myWorkspaces !! 7 )
      , className =? "mpv"               --> doFullFloat
@@ -396,7 +400,7 @@ workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView 
 
 defaults xmproc0 = def
         { manageHook         = myManageHook <+> manageDocks
-        , handleEventHook    = docksEventHook <+> fullscreenEventHook
+        , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
         , modMask            = myModMask
         , terminal           = myTerminal
         , startupHook        = myStartupHook
