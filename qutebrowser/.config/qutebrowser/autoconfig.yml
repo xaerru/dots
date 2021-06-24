@@ -6,6 +6,8 @@
 
 config_version: 2
 settings:
+  colors.webpage.darkmode.enabled:
+    global: true
   statusbar.show:
     global: always
   tabs.show:
