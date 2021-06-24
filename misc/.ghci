@@ -1,3 +1,4 @@
 import Data.List
 :set prompt "\ESC[35mλ> \ESC[m"
 :def pf \str -> return $ ":! pointfree \"" ++ str ++ "\""
+:set +s
