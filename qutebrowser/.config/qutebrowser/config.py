@@ -215,12 +215,14 @@ c.url.default_page = 'https://start.duckduckgo.com'
 # Type: Dict
 c.url.searchengines = {'DEFAULT': 'https://duckduckgo.com/?q={}', 'am': 'https://www.amazon.com/s?k={}', 'aw': 'https://wiki.archlinux.org/?search={}', 'goog': 'https://www.google.com/search?q={}', 'hoog': 'https://hoogle.haskell.org/?hoogle={}', 're': 'https://www.reddit.com/r/{}', 'ub': 'https://www.urbandictionary.com/define.php?term={}', 'wiki': 'https://en.wikipedia.org/wiki/{}', 'yt': 'https://www.youtube.com/results?search_query={}'}
 
+config.bind('K', ":tab-next")
+config.bind('J', ":tab-prev")
 
 # Bindings for normal mode
 config.bind('xb', 'config-cycle statusbar.show always never')
 config.bind('xt', 'config-cycle tabs.show always never')
 config.bind('xx', 'config-cycle statusbar.show always never;; config-cycle tabs.show always never')
-config.bind('<Space>p', ':spawn -u qute-bitwarden')
+config.bind('<Space>b', ':spawn -u qute-bitwarden')
 
 # Open URLs in new tab
 config.bind('<Space>q', ':close')
@@ -233,6 +235,7 @@ config.bind('<Space>du', ':open duckduckgo.com')
 config.bind('<Space>go', ':open google.com')
 config.bind('<Space>te', ':open web.telegram.org')
 config.bind('<Space>wh', ':open web.whatsapp.com')
+config.bind('<Space>pv', ':open primevideo.com')
 config.bind('<Space>t', ':open -t')
 config.bind('<Space>T', ':open --private')
 
