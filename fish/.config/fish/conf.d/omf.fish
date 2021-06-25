@@ -39,6 +39,7 @@ alias grep='rg --color=auto'
 alias rg='rg --color=auto'
 # adding flags
 alias df='df -h'                          # human-readable sizes
+alias du='du -h'
 alias free='free -m'                      # show sizes in MB
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
