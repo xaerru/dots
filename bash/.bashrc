@@ -8,6 +8,7 @@
 export MANPAGER="nvim -c 'set ft=man' -"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export SHELL=/usr/bin/fish
+
 function set_bash_prompt () {
 	# Color codes for easy prompt building
 	COLOR_DIVIDER="\[\e[30;1m\]"
@@ -46,12 +47,10 @@ function set_bash_prompt () {
 	PS1="${PS1}]\n${COLOR_DIVIDER}[${COLOR_USERNAME}\u${COLOR_USERHOSTAT}@${COLOR_HOSTNAME}\h${COLOR_DIVIDER}]${COLOR_NONE} "
 }
 
-# Tell Bash to run the above function for every prompt
 export PROMPT_COMMAND=set_bash_prompt
 
 alias ls='exa --color=always --group-directories-first --icons'
 alias c='clear'
-#PS1='[\u@\h \W]\$ '
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
 
