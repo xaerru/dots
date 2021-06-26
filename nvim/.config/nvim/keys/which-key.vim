@@ -94,7 +94,7 @@ let g:which_key_map.g = {
 let g:which_key_sep = '»'
 " set timeoutlen=100
 
-let g:which_key_use_floating_win = 0
+let g:which_key_use_floating_win = 1
 
 " Change the colors if you want
 highlight default link WhichKey          Operator
