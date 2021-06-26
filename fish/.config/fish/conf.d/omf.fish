@@ -21,14 +21,14 @@ export TERM=xterm-256color
 export NNN_PLUG='o:fzopen;v:imgview;s:preview-tui;'
 set --export NNN_FIFO "/tmp/nnn.fifo"
 
-# Alias
+# Aliases
 alias v="nvim"
 alias c="clear"
 alias cdc="cd && clear"
 alias cat='bat'
 # Changing "ls" to "exa"
-alias ls='exa -l --color=always --group-directories-first --icons'  # all files and dirs
-alias la='exa -al --color=always --group-directories-first --icons' # my preferred listing
+alias ls='exa -l --color=always --group-directories-first --icons'
+alias la='exa -al --color=always --group-directories-first --icons'
 alias l.='exa -a | rg "^\."'
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist-arch"
@@ -38,9 +38,9 @@ alias rm="trash"
 alias grep='rg --color=auto'
 alias rg='rg --color=auto'
 # adding flags
-alias df='df -h'                          # human-readable sizes
+alias df='df -h'
 alias du='du -h'
-alias free='free -m'                      # show sizes in MB
+alias free='free -m'
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
@@ -51,5 +51,3 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias ..="cd .."
 alias ...="cd ../.."
-
-# cat ~/.config/name.txt | awk -v col=$COLUMNS '{n_blank=(col-length($0))/2 ; printf "%-*s",n_blank," " ;print $0}'
