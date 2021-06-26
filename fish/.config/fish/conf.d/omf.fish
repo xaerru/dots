@@ -25,7 +25,6 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 alias v="nvim"
 alias c="clear"
 alias cdc="cd && clear"
-alias ls="exa --icons --group-directories-first"
 alias cat='bat'
 # Changing "ls" to "exa"
 alias ls='exa --color=always --group-directories-first --icons'  # all files and dirs
