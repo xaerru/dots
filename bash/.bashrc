@@ -14,3 +14,5 @@ alias c='clear'
 PS1='[\u@\h \W]\$ '
 source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
+
+source /home/grvxs/.config/broot/launcher/bash/br
