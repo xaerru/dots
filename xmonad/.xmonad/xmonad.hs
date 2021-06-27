@@ -248,7 +248,7 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
-    [ className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
+    [ className =? "Evince"             --> doShift ( myWorkspaces !! 3 )
     , className =? "Spotify"            --> doShift (myWorkspaces !! 5)
     ]
 
@@ -366,7 +366,6 @@ myKeys =
         , ("M-C-k", sendMessage $ pullGroup U)
         , ("M-C-j", sendMessage $ pullGroup D)
         , ("M-C-m", withFocused (sendMessage . MergeAll))
-        -- , ("M-C-u", withFocused (sendMessage . UnMerge))
         , ("M-C-/", withFocused (sendMessage . UnMergeAll))
         , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
@@ -420,7 +419,7 @@ defaults xmproc0 = def
                               ppVisible = xmobarColor "#A3BE8C" "" . clickable,
                               ppHidden = xmobarColor "#81A1C1" "" . wrap "*" "" . clickable,
                               ppHiddenNoWindows = xmobarColor "#B48EAD" "" . clickable,
-                              ppTitle = xmobarColor "#b3afc2" "" . shorten 100,
+                              ppTitle = xmobarColor "#D8DEE9" "" . shorten 100,
                               ppSep = "<fc=#666666> <fn=1>|</fn> </fc>",
                               ppUrgent = xmobarColor "#BF616A" "" . wrap "!" "!",
                               ppExtras = [windowCount],
