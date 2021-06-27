@@ -23,6 +23,7 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 
 # Aliases
 alias v="nvim"
+alias p="paru"
 alias c="clear"
 alias cdc="cd && clear"
 alias cat='bat'
