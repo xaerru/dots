@@ -40,7 +40,7 @@ alias grep='rg --color=auto'
 alias rg='rg --color=auto'
 # adding flags
 alias df='df -h'
-alias du='du -h'
+alias du='dust'
 alias free='free -m'
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
