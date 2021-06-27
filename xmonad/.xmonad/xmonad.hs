@@ -248,7 +248,9 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
-    [ className =? "Spotify"            --> doShift (myWorkspaces !! 5)]
+    [ className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
+    , className =? "Spotify"            --> doShift (myWorkspaces !! 5)
+    ]
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
@@ -269,6 +271,7 @@ myManageHook = composeAll
      , className =? "virt-manager"      --> doFloat
      , isFullscreen                     --> doFullFloat
      , className =? "qutebrowser"       --> doShift ( myWorkspaces !! 1 )
+     , className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"      --> doShift ( myWorkspaces !! 7 )
