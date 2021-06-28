@@ -11,7 +11,8 @@ let g:coc_global_extensions = [
             \ 'coc-emmet',
             \ 'coc-react-refactor',
             \ 'coc-rust-analyzer',
-            \ 'coc-vimlsp']
+            \ 'coc-vimlsp',
+            \ 'coc-clangd']
 set nobackup
 set nowritebackup
 set updatetime=300
