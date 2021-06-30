@@ -7,7 +7,6 @@ set -q XDG_DATA_HOME
 source $OMF_PATH/init.fish
 
 # Source other files
-#source ~/installs/anaconda3/etc/fish/conf.d/conda.fish
 set -gx PATH "$HOME/.cargo/bin" $PATH;
 set -gx PATH "$HOME/.local/bin" $PATH;
 set -gx PATH "$HOME/.cabal/bin" $PATH;
