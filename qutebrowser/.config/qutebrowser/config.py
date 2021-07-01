@@ -237,7 +237,7 @@ config.bind('<Space>go', ':open google.com')
 config.bind('<Space>te', ':open web.telegram.org')
 config.bind('<Space>wh', ':open web.whatsapp.com')
 config.bind('<Space>pv', ':open primevideo.com')
-config.bind('<Space>pv', ':open https://wiki.osdev.org/Main_Page')
+config.bind('<Space>os', ':open https://wiki.osdev.org/Main_Page')
 config.bind('<Space>t', ':open -t')
 config.bind('<Space>T', ':open --private')
 
