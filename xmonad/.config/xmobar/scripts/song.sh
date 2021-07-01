@@ -1,2 +1,3 @@
 #!/bin/bash
-playerctl metadata --format "{{ artist }} - {{ album }} - {{ title }}"
+song=$(playerctl metadata --format "{{ artist }} - {{ album }} - {{ title }}")
+echo $song
