@@ -273,6 +273,7 @@ myManageHook = composeAll
      , className =? "qutebrowser"       --> doShift ( myWorkspaces !! 1 )
      , className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
+     , className =? "Audacious"         --> doShift ( myWorkspaces !! 5 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
      , className =? "Virt-manager"      --> doShift ( myWorkspaces !! 7 )
      , className =? "mpv"               --> doFullFloat
