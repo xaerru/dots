@@ -248,8 +248,8 @@ clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
 myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
-    [ className =? "Evince"             --> doShift ( myWorkspaces !! 3 )
-    , className =? "Spotify"            --> doShift (myWorkspaces !! 5)
+    [
+     className =? "Spotify"            --> doShift (myWorkspaces !! 5)
     ]
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
