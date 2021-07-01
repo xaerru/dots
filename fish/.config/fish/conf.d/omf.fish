@@ -26,6 +26,7 @@ alias p="paru"
 alias c="clear"
 alias cdc="cd && clear"
 alias cat='bat'
+alias lz='lazygit'
 # Changing "ls" to "exa"
 alias ls='exa -l --color=always --group-directories-first --icons'
 alias la='exa -al --color=always --group-directories-first --icons'
