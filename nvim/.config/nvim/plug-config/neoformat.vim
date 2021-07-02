@@ -10,7 +10,7 @@ let g:neoformat_rust_rustfmt = {
         \}
 let g:neoformat_c_clangformat = {
     \ 'exe': 'clang-format',
-    \ 'args': ['--style=gnu']
+    \ 'args': ['--style="{BasedOnStyle: chromium, IndentWidth: 4}"']
 \}
 let g:neoformat_cpp_clangformat = {
     \ 'exe': 'clang-format',
