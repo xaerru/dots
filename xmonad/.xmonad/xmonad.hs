@@ -394,6 +394,7 @@ myKeys =
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
         , ("<Print>", spawn "maim -s | xclip -selection clipboard -t image/png")
         , ("C-<Print>", spawn "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
+        , ("C-S-<Print>", spawn "maim -x $DISPLAY | xclip -selection clipboard -t image/png")
         ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
