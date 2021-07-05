@@ -28,6 +28,10 @@ alias cdc="cd && clear"
 alias cat='bat'
 alias gc="git clone"
 alias lz='lazygit'
+alias cr='cargo run'
+alias cb='cargo build'
+alias ca='cargo add'
+alias cw='cargo watch'
 # Changing "ls" to "exa"
 alias ls='exa -l --color=always --group-directories-first --icons'
 alias la='exa -al --color=always --group-directories-first --icons'
