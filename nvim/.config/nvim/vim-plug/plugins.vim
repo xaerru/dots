@@ -25,7 +25,6 @@ Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdowm preview
 Plug 'preservim/nerdcommenter' " Commenter
 Plug 'sbdchd/neoformat' " Code formatting
-Plug 'cdelledonne/vim-cmake' " Make
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
