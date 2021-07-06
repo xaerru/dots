@@ -16,7 +16,7 @@ Plug 'airblade/vim-rooter' " Change directory to root repo
 Plug 'puremourning/vimspector' " Debug
 Plug 'szw/vim-maximizer' " Maximize 1 window
 Plug 'liuchengxu/vim-which-key' " Show leader binds
-Plug 'lukas-reineke/indent-blankline.nvim', {'branch': 'lua'} " Indents
+Plug 'lukas-reineke/indent-blankline.nvim' " Indents
 Plug 'justinmk/vim-sneak' " Navigate faster
 Plug 'arcticicestudio/nord-vim' " Nord theme
 Plug 'vim-airline/vim-airline' " Status line
@@ -25,6 +25,7 @@ Plug 'ryanoasis/vim-devicons' " Icons
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  } " Markdowm preview
 Plug 'preservim/nerdcommenter' " Commenter
 Plug 'sbdchd/neoformat' " Code formatting
+Plug 'cdelledonne/vim-cmake' " Make
 Plug 'preservim/nerdtree' |
             \ Plug 'Xuyuanp/nerdtree-git-plugin' | " Git for nerdtree
             \ Plug 'ryanoasis/vim-devicons' " Icons
