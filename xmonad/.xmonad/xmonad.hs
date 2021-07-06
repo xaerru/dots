@@ -392,9 +392,9 @@ myKeys =
         , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 0 +5%")
         , ("M-s u", spawn "pactl -- set-sink-volume 0 +5%")
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
-        , ("<Print>", spawn "maim -s | xclip -selection clipboard -t image/png")
-        , ("C-<Print>", spawn "maim -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
-        , ("C-S-<Print>", spawn "maim | xclip -selection clipboard -t image/png")
+        , ("<Print>", spawn "maim -su | xclip -selection clipboard -t image/png")
+        , ("C-<Print>", spawn "maim -iu $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
+        , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
         ]
     -- The following lines are needed for named scratchpads.
           where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
