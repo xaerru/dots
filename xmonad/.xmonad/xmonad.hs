@@ -393,7 +393,7 @@ myKeys =
         , ("M-s u", spawn "pactl -- set-sink-volume 0 +5%")
         , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
         , ("<Print>", spawn "maim -su | xclip -selection clipboard -t image/png")
-        , ("C-<Print>", spawn "maim -iu $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
+        , ("C-<Print>", spawn "maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
         , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
         ]
     -- The following lines are needed for named scratchpads.
