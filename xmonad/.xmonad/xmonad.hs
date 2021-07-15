@@ -112,7 +112,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 
 myStartupHook :: X ()
 myStartupHook = do
-    spawnOnce "picom --experimental-backend -b -cC &"
+    spawnOnce "picom --experimental-backend -b&"
     spawnOnce "dunst"
     spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
     spawnOnce " hsetroot -solid '#2E3440'"
