@@ -123,7 +123,7 @@ myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
                 , NS "calculator" spawnCalc findCalc manageCalc
                 ]
   where
-    spawnTerm  = myTerminal ++ " -t scratchpad"
+    spawnTerm  = myTerminal ++ " -t scratchpad -e tmux attach -t dev"
     findTerm   = title =? "scratchpad"
     manageTerm = customFloating $ W.RationalRect l t w h
                where
