@@ -270,7 +270,6 @@ myManageHook = composeAll
      , className =? "toolbar"           --> doFloat
      , className =? "virt-manager"      --> doFloat
      , isFullscreen                     --> doFullFloat
-     , className =? "qutebrowser"       --> doShift ( myWorkspaces !! 1 )
      , className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
      , className =? "Audacious"         --> doShift ( myWorkspaces !! 5 )
