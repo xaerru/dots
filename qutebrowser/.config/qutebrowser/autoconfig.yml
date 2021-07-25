@@ -8,6 +8,8 @@ config_version: 2
 settings:
   colors.webpage.darkmode.enabled:
     global: false
+  content.geolocation:
+    https://www.google.com: false
   content.headers.user_agent:
     global: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
       Gecko) Chrome/75.0.3770.100 Safari/537.36
