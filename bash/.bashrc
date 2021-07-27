@@ -54,7 +54,6 @@ alias v="nvim"
 alias p="paru"
 alias c="clear"
 alias cdc="cd && clear"
-alias cat='bat'
 alias gc="git clone"
 alias lz='lazygit'
 # Changing "ls" to "exa"
@@ -63,13 +62,6 @@ alias la='exa -al --color=always --group-directories-first --icons'
 alias l.='exa -a | rg "^\."'
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist-arch"
-# Colorize grep output (good for log files)
-alias grep='rg --color=auto'
-alias rg='rg --color=auto'
-# adding flags
-alias df='df -h'
-alias du='dust'
-alias free='free -m'
 ## get top process eating memory
 alias psmem='ps auxf | sort -nr -k 4'
 alias psmem10='ps auxf | sort -nr -k 4 | head -10'
