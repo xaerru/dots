@@ -24,6 +24,7 @@ set --export NNN_FIFO "/tmp/nnn.fifo"
 alias v="nvim"
 alias p="paru"
 alias c="clear"
+alias C="clear"
 alias cdc="cd && clear"
 alias cat='bat'
 alias gc="git clone"
