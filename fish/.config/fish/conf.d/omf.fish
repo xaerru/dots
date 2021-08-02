@@ -41,6 +41,8 @@ alias l.='exa -a | rg "^\."'
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist-arch"
 # Trash instead of rm
 alias rm="trash"
+alias te="trash-empty"
+alias tre="trash-restore"
 # Colorize grep output (good for log files)
 alias grep='rg --color=auto'
 alias rg='rg --color=auto'
