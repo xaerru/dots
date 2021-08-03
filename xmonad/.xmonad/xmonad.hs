@@ -119,6 +119,7 @@ myStartupHook = do
     spawnOnce "~/.fehbg"
     spawnOnce "discord"
     spawnOnce "slack"
+    spawnOnce "element-desktop"
     setWMName "LG3D"
 
 myScratchPads :: [NamedScratchpad]
