@@ -117,6 +117,8 @@ myStartupHook = do
     spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
     --spawnOnce " hsetroot -solid '#2E3440'"
     spawnOnce "~/.fehbg"
+    spawnOnce "discord"
+    spawnOnce "slack"
     setWMName "LG3D"
 
 myScratchPads :: [NamedScratchpad]
@@ -242,7 +244,7 @@ myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange $ T.togg
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 --myWorkspaces = map show [1..9]
-myWorkspaces = ["dev", "web", "test", "read", "chat", "mus", "sch", "vir", "soc"]
+myWorkspaces = ["dev", "web", "test", "slck", "dsc", "mus", "sch", "vir", "soc"]
 myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
@@ -272,6 +274,7 @@ myManageHook = composeAll
      , className =? "virt-manager"      --> doFloat
      , isFullscreen                     --> doFullFloat
      , className =? "Evince"            --> doShift ( myWorkspaces !! 3 )
+     , className =? "Slack"             --> doShift ( myWorkspaces !! 3 )
      , className =? "discord"           --> doShift ( myWorkspaces !! 4 )
      , className =? "Audacious"         --> doShift ( myWorkspaces !! 5 )
      , className =? "zoom"              --> doShift ( myWorkspaces !! 6 )
