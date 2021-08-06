@@ -16,7 +16,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR='nvim'
 export MANPAGER="nvim -c 'set ft=man' -"
 export SHELL=/usr/bin/fish
-export TERM=xterm-256color
 export NNN_PLUG='o:fzopen;v:imgview;s:preview-tui;'
 set --export NNN_FIFO "/tmp/nnn.fifo"
 
