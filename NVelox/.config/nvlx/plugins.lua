@@ -2,12 +2,12 @@ return {
     {
         "p00f/cphelper.nvim",
         rocks = "http",
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
         "phaazon/hop.nvim",
-        after = "packer.nvim",
+        after = "nordbuddy",
     },
 
     {
