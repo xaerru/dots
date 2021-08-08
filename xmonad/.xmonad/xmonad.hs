@@ -117,6 +117,7 @@ myStartupHook = do
     spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
     --spawnOnce " hsetroot -solid '#2E3440'"
     spawnOnce "~/.fehbg"
+    spawnOnce "xcape -f -t 150"
     spawnOnce "discord"
     spawnOnce "slack"
     spawnOnce "element-desktop"
