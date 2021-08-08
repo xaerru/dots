@@ -291,6 +291,7 @@ myKeys =
         [ ("M-M1-c", spawn "xmonad --recompile")  -- Recompiles xmonad
         , ("M-M1-r", spawn "xmonad --restart")    -- Restarts xmonad
         , ("M-M1-e", io exitSuccess)              -- Quits xmonad
+        , ("M-S-l", spawn "$HOME/.xmonad/scripts/switchlayout.sh")
 
     -- Run Prompt
         , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -h 24") -- Dmenu
