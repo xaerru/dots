@@ -59,4 +59,10 @@ nvlx.settings = {
         "precedes:❮",
         "nbsp:_",
     }, ","),
+    fillchars = table.concat({
+        [[fold: ]],
+        [[vert:│]],
+        [[eob: ]],
+        [[msgsep:‾]]
+    }, ",")
 }
