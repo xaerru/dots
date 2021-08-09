@@ -1,4 +1,5 @@
   -- Base
+import           Control.Monad
 import           System.Directory
 import           System.Exit                         (exitSuccess)
 import           System.IO                           (hPutStrLn)
@@ -88,6 +89,9 @@ myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
 myTerminal = "alacritty"    -- Sets default terminal
+
+myLayout :: String
+myLayout = "qwerty"
 
 myBrowser :: String
 myBrowser = "qutebrowser "  -- Sets qutebrowser as browser
@@ -409,6 +413,22 @@ myKeys =
 
 workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
 
+dvorak = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_ampersand, xK_bracketleft, xK_braceleft, xK_braceright, xK_parenleft, xK_equal, xK_asterisk, xK_parenright, xK_plus, xK_bracketright ])]
+
+dvorakShift conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+    [
+    ((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_ampersand, xK_bracketleft, xK_braceleft, xK_braceright, xK_parenleft, xK_equal, xK_asterisk, xK_parenright, xK_plus, xK_bracketright ]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
+qwertyShift conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
+    [
+    ((m .|. modm, k), windows $ f i)
+        | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_9]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+
+key = if myLayout == "dvorak" then dvorak else workspaceBackAndForth
+
 defaults xmproc0 = def
         { manageHook         = myManageHook <+> manageDocks
         , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
@@ -417,6 +437,7 @@ defaults xmproc0 = def
         , startupHook        = myStartupHook
         , layoutHook         = myLayoutHook
         , workspaces         = myWorkspaces
+        , keys = if myLayout == "dvorak" then dvorakShift else qwertyShift
         , borderWidth        = myBorderWidth
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
@@ -435,7 +456,7 @@ defaults xmproc0 = def
                               ppOrder = \ (ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
                              })
                       >> historyHook
-        } `additionalKeys` workspaceBackAndForth `additionalKeysP` myKeys
+        } `additionalKeys` key `additionalKeysP` myKeys
 
 main :: IO ()
 main = do
