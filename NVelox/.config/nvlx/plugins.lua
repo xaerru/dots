@@ -25,6 +25,7 @@ return {
                 line_number_text = "Line %s out of %s", -- Line number format string (for when enable_line_number is set to true)
             })
         end,
+        after = "nordbuddy"
     },
 
     {
