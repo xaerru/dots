@@ -17,6 +17,54 @@ nvlx.general = {
     },
 }
 
+nvlx.config.plugins.whichkey = {
+    normal = {
+        H = {
+            {
+                name = "hop",
+                c = { "<cmd>HopChar1<cr>", "Char1" },
+                l = { "<cmd>HopLine<cr>", "Line" },
+                p = { "<cmd>HopPattern<cr>", "Pattern" },
+                s = { "<cmd>ISwapWith<cr>", "Swap arguments" },
+                v = { "<cmd>HopChar2<cr>", "Char2" },
+                w = { "<cmd>HopWord<cr>", "Word" },
+            },
+            { prefix = "" },
+        },
+        o = {
+            {
+                name = "cphelper",
+                d = { "<CMD>CphDelete<CR>", "Delete testcases" },
+                e = { "<CMD>CphEdit<CR>", "Edit/Add testcases" },
+                i = { "<CMD>CphRetest<CR>", "Run tests without recompiling" },
+                r = { "<CMD>CphReceive<CR>", "Receive problem" },
+                t = { "<CMD>CphTest<CR>", "Run tests" },
+            },
+        },
+    },
+    visual = {
+        H = {
+            {
+                name = "hop",
+                c = { "<cmd>HopChar1<cr>", "Char1" },
+                l = { "<cmd>HopLine<cr>", "Line" },
+                p = { "<cmd>HopPattern<cr>", "Pattern" },
+                v = { "<cmd>HopChar2<cr>", "Char2" },
+                w = { "<cmd>HopWord<cr>", "Word" },
+            },
+            {prefix = "", mode = "v"}
+        },
+    },
+    {
+        [";;"] = { "which_key_ignore", mode = "i" },
+        ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
+        ["<leader>f"] = { [[<CMD>%s/\s\+$//e | noh | Neoformat | write<CR>]], "Format" },
+        ["<leader>j"] = { "<CMD><ESC>:m .+1<CR>==<CR>", "Move Line Down" },
+        ["<leader>k"] = { "<CMD><ESC>:m .-2<CR>==<CR>", "Move Line Up" },
+        ["<leader>n"] = { "<CMD>NvimTreeToggle<CR>", "Nvim Tree Toggle" },
+    },
+}
+
 nvlx.keybinds = {
     insert = {
         ["jj"] = "<Right>",
@@ -27,8 +75,6 @@ nvlx.keybinds = {
 
     normal = {
         [";"] = ":",
-        ["<leader>j"] = "<ESC>:m .+1<CR>==",
-        ["<leader>k"] = "<ESC>:m .-2<CR>==",
     },
 
     object = {
@@ -63,6 +109,6 @@ nvlx.settings = {
         [[fold: ]],
         [[vert:│]],
         [[eob: ]],
-        [[msgsep:‾]]
-    }, ",")
+        [[msgsep:‾]],
+    }, ","),
 }
