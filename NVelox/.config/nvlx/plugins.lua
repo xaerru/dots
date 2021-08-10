@@ -6,6 +6,14 @@ return {
     },
 
     {
+        "iamcco/markdown-preview.nvim",
+        config = function ()
+            vim.g.mkdp_auto_start = 1
+        end,
+        ft = "markdown",
+    },
+
+    {
         "andweeb/presence.nvim",
         config = function()
             require("presence"):setup({
@@ -25,7 +33,7 @@ return {
                 line_number_text = "Line %s out of %s", -- Line number format string (for when enable_line_number is set to true)
             })
         end,
-        after = "nordbuddy"
+        after = "nordbuddy",
     },
 
     {

@@ -52,7 +52,7 @@ nvlx.config.plugins.whichkey = {
                 v = { "<cmd>HopChar2<cr>", "Char2" },
                 w = { "<cmd>HopWord<cr>", "Word" },
             },
-            {prefix = "", mode = "v"}
+            { prefix = "", mode = "v" },
         },
     },
     {
