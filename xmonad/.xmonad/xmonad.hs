@@ -160,17 +160,21 @@ myManageHook = composeAll
 
 myKeys :: [(String, X ())]
 myKeys =
-        [ ("M-M1-c", spawn "xmonad --recompile")  -- Recompiles xmonad
+        [
+        -- XMonad stuff
+          ("M-M1-c", spawn "xmonad --recompile")  -- Recompiles xmonad
         , ("M-M1-r", spawn "xmonad --restart")    -- Restarts xmonad
         , ("M-M1-e", io exitSuccess)              -- Quits xmonad
         , ("M-S-l", spawn "$HOME/.xmonad/scripts/switchlayout.sh")
         , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -h 24") -- Dmenu
+
+        -- Dmenu stuff
         , ("M-p e", spawn "dmconf")   -- edit config files
         , ("M-p k", spawn "dmkill")   -- kill processes
         , ("M-p q", spawn "dmlogout") -- logout menu
         , ("M-p s", spawn "dmsearch") -- search various search engines
 
-    -- Useful programs to have a keybinding for launch
+        -- Launch keybinds
         , ("M-<Return>", spawn "$HOME/.xmonad/scripts/terminal.sh")
         , ("M-\\", spawn myTerminal)
         , ("M-i", spawn myBrowser)
@@ -180,32 +184,32 @@ myKeys =
         , ("M-a", spawn "xset r rate 300 50")
         , ("M-c", spawn "colorpicker --short --one-shot --preview | xclip -selection clipboard")
 
-    -- Kill windows
+        -- Kill windows
         , ("M-q", kill1)     -- Kill the currently focused client
         , ("M-S-q", killAll)   -- Kill all windows on current workspace
         , ("M-u", nextMatch History (return True))-- Move to recent workspace
 
-    -- Increase/decrease spacing (gaps)
+        -- Increase/decrease gaps
         , ("C-M1-j", decWindowSpacing 4)         -- Decrease window spacing
         , ("C-M1-k", incWindowSpacing 4)         -- Increase window spacing
         , ("C-M1-h", decScreenSpacing 4)         -- Decrease screen spacing
         , ("C-M1-l", incScreenSpacing 4)         -- Increase screen spacing
 
-    -- Windows navigation
+        -- Window navigation
         , ("M-j", windows W.focusDown)    -- Move focus to the next window
         , ("M-k", windows W.focusUp)      -- Move focus to the prev window
         , ("M-<Backspace>", promote)      -- Moves focused window to master, others maintain order
 
-    -- Layouts
+        -- Fullscreen
         , ("M-<Space>", sendMessage (MT.Toggle NBFULL) >> sendMessage ToggleStruts) -- Toggles noborder/full
 
-    -- Window resizing
+        -- Window resizing
         , ("M-h", sendMessage Shrink)                   -- Shrink horiz window width
         , ("M-l", sendMessage Expand)                   -- Expand horiz window width
         , ("M-M1-j", sendMessage MirrorShrink)          -- Shrink vert window width
         , ("M-M1-k", sendMessage MirrorExpand)          -- Expand vert window width
 
-    -- Multimedia Keys
+        -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn "playerctl play-pause")
         , ("M-s p", spawn "playerctl play-pause")
         , ("<XF86AudioPrev>", spawn "playerctl previous")
@@ -213,11 +217,8 @@ myKeys =
         , ("<XF86AudioNext>", spawn "playerctl next")
         , ("M-s n", spawn "playerctl next")
         , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-        , ("M-s m", spawn "pactl set-sink-mute 0 toggle")
         , ("<XF86AudioLowerVolume>", spawn "pactl -- set-sink-volume 0 -5%")
-        , ("M-s d", spawn "pactl -- set-sink-volume 0 -5%")
         , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 0 +5%")
-        , ("M-s u", spawn "pactl -- set-sink-volume 0 +5%")
         , ("<XF86Calculator>", spawn "qalculate-gtk")
         , ("<Print>", spawn "maim -su | xclip -selection clipboard -t image/png")
         , ("C-<Print>", spawn "maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
