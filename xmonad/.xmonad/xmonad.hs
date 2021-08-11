@@ -16,9 +16,6 @@ import           XMonad.Actions.GroupNavigation
 import           XMonad.Actions.MouseResize
 import           XMonad.Actions.PerWorkspaceKeys
 import           XMonad.Actions.Promote
-import           XMonad.Actions.RotSlaves            (rotAllDown, rotSlavesDown)
-import qualified XMonad.Actions.Search               as S
-import           XMonad.Actions.WindowGo             (runOrRaise)
 import           XMonad.Actions.WithAll              (killAll, sinkAll)
 
     -- Data
@@ -43,21 +40,13 @@ import           XMonad.Hooks.ServerMode
 import           XMonad.Hooks.SetWMName
 import           XMonad.Hooks.WorkspaceHistory
 
-    -- Layouts
-import           XMonad.Layout.Accordion
-import           XMonad.Layout.GridVariants          (Grid (Grid))
 import           XMonad.Layout.ResizableTile
-import           XMonad.Layout.SimplestFloat
-import           XMonad.Layout.Spiral
-import           XMonad.Layout.Tabbed
-import           XMonad.Layout.ThreeColumns
 
     -- Layouts modifiers
 import           XMonad.Layout.LayoutModifier
 import           XMonad.Layout.LimitWindows          (decreaseLimit,
                                                       increaseLimit,
                                                       limitWindows)
-import           XMonad.Layout.Magnifier
 import           XMonad.Layout.MultiToggle           (EOT (EOT), mkToggle,
                                                       single, (??))
 import qualified XMonad.Layout.MultiToggle           as MT (Toggle (..))
@@ -71,12 +60,8 @@ import qualified XMonad.Layout.ToggleLayouts         as T (ToggleLayout (Toggle)
                                                            toggleLayouts)
 import           XMonad.Layout.WindowArranger        (WindowArrangerMsg (..),
                                                       windowArrange)
-
-   -- Utilities
-import           XMonad.Util.Dmenu
 import           XMonad.Util.EZConfig                (additionalKeys,
                                                       additionalKeysP)
-import           XMonad.Util.NamedScratchpad
 import           XMonad.Util.Run                     (runProcessWithInput,
                                                       safeSpawn, spawnPipe)
 import           XMonad.Util.SpawnOnce
@@ -149,10 +134,8 @@ myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange
              where
                myDefaultLayout =     withBorder myBorderWidth tall
 
--- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
---myWorkspaces = map show [1..9]
 myWorkspaces = ["dev", "web", "test", "mtrx", "dsc", "slck", "mus", "sch", "virt"]
-myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..] -- (,) == \x y -> (x,y)
+myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..]
 
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
@@ -248,7 +231,7 @@ myKeys =
         , ("M-s d", spawn "pactl -- set-sink-volume 0 -5%")
         , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 0 +5%")
         , ("M-s u", spawn "pactl -- set-sink-volume 0 +5%")
-        , ("<XF86Calculator>", runOrRaise "qalculate-gtk" (resource =? "qalculate-gtk"))
+        , ("<XF86Calculator>", spawn "qalculate-gtk")
         , ("<Print>", spawn "maim -su | xclip -selection clipboard -t image/png")
         , ("C-<Print>", spawn "maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
         , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
@@ -285,8 +268,7 @@ defaults xmproc0 = def
         , normalBorderColor  = myNormColor
         , focusedBorderColor = myFocusColor
         , logHook = dynamicLogWithPP
-                      (namedScratchpadFilterOutWorkspacePP
-                         $ xmobarPP
+                          xmobarPP
                              {ppOutput = hPutStrLn xmproc0,
                               ppCurrent = xmobarColor "#A3BE8C" "" . wrap "[" "]" . clickable,
                               ppVisible = xmobarColor "#A3BE8C" "" . clickable,
@@ -297,13 +279,11 @@ defaults xmproc0 = def
                               ppUrgent = xmobarColor "#BF616A" "" . wrap "!" "!",
                               ppExtras = [windowCount],
                               ppOrder = \ (ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
-                             })
+                             }
                       >> historyHook
         } `additionalKeys` key `additionalKeysP` myKeys
 
 main :: IO ()
 main = do
-    -- Launching xmobar.
     xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar.config"
-    -- the xmonad, ya know...what the WM is named after!
     xmonad $ ewmh $ defaults xmproc0
