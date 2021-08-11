@@ -1,4 +1,4 @@
-  -- Base
+-- Base
 import           Control.Monad
 import           System.Directory
 import           System.Exit                         (exitSuccess)
@@ -6,26 +6,25 @@ import           System.IO                           (hPutStrLn)
 import           XMonad
 import qualified XMonad.StackSet                     as W
 
-    -- Actions
+-- Actions
 import           XMonad.Actions.CopyWindow           (kill1)
 import           XMonad.Actions.CycleWS              (Direction1D (..),
                                                       WSType (..), moveTo,
                                                       nextScreen, prevScreen,
                                                       shiftTo, toggleWS)
 import           XMonad.Actions.GroupNavigation
-import           XMonad.Actions.MouseResize
 import           XMonad.Actions.PerWorkspaceKeys
 import           XMonad.Actions.Promote
 import           XMonad.Actions.WithAll              (killAll, sinkAll)
 
-    -- Data
+-- Data
 import           Data.Char                           (isSpace, toUpper)
 import qualified Data.Map                            as M
 import           Data.Maybe                          (fromJust, isJust)
 import           Data.Monoid
 import           Data.Tree
 
-    -- Hooks
+-- Hooks
 import           XMonad.Hooks.DynamicLog             (PP (..), dynamicLogWithPP,
                                                       shorten, wrap,
                                                       xmobarColor, xmobarPP)
@@ -36,13 +35,10 @@ import           XMonad.Hooks.ManageDocks            (ToggleStruts (..),
                                                       docksEventHook,
                                                       manageDocks)
 import           XMonad.Hooks.ManageHelpers          (doFullFloat, isFullscreen)
-import           XMonad.Hooks.ServerMode
 import           XMonad.Hooks.SetWMName
 import           XMonad.Hooks.WorkspaceHistory
 
-import           XMonad.Layout.ResizableTile
-
-    -- Layouts modifiers
+-- Layouts
 import           XMonad.Layout.LayoutModifier
 import           XMonad.Layout.LimitWindows          (decreaseLimit,
                                                       increaseLimit,
@@ -53,6 +49,7 @@ import qualified XMonad.Layout.MultiToggle           as MT (Toggle (..))
 import           XMonad.Layout.MultiToggle.Instances (StdTransformers (MIRROR, NBFULL, NOBORDERS))
 import           XMonad.Layout.NoBorders
 import           XMonad.Layout.Renamed
+import           XMonad.Layout.ResizableTile
 import           XMonad.Layout.Simplest
 import           XMonad.Layout.Spacing
 import           XMonad.Layout.SubLayouts
@@ -109,19 +106,11 @@ myStartupHook = do
     spawnOnce "element-desktop"
     setWMName "LG3D"
 
---Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
+-- mySpacing helps to set gaps
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
 
--- Below is a variation of the above except no borders are applied
--- if fewer than two windows. So a single window has no gaps.
-mySpacing' :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
-mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
-
--- Defining a bunch of layouts, many that I don't use.
--- limitWindows n sets maximum number of windows displayed for layout.
--- mySpacing n sets the gap size around the windows.
-tall     = renamed [Replace "tall"]
+tall = renamed [Replace "tall"]
            $ smartBorders
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
@@ -129,7 +118,7 @@ tall     = renamed [Replace "tall"]
            $ ResizableTall 1 (3/100) (1/2) []
 
 -- The layout hook
-myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange
+myLayoutHook = smartBorders $ avoidStruts $ windowArrange
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     withBorder myBorderWidth tall
@@ -175,9 +164,7 @@ myKeys =
         , ("M-M1-r", spawn "xmonad --restart")    -- Restarts xmonad
         , ("M-M1-e", io exitSuccess)              -- Quits xmonad
         , ("M-S-l", spawn "$HOME/.xmonad/scripts/switchlayout.sh")
-
         , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -h 24") -- Dmenu
-
         , ("M-p e", spawn "dmconf")   -- edit config files
         , ("M-p k", spawn "dmkill")   -- kill processes
         , ("M-p q", spawn "dmlogout") -- logout menu
