@@ -93,6 +93,7 @@ myFocusColor  = "#5E81AC"   -- Border color of focused windows
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
 
+-- Launch Stuff on startup
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "picom --experimental-backend -b&"
@@ -117,23 +118,21 @@ tall = renamed [Replace "tall"]
            $ mySpacing 2
            $ ResizableTall 1 (3/100) (1/2) []
 
--- The layout hook
+-- Layout hook (Only tall for now)
 myLayoutHook = smartBorders $ avoidStruts $ windowArrange
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     withBorder myBorderWidth tall
 
+-- Workspace names and indicied
 myWorkspaces = ["dev", "web", "test", "mtrx", "dsc", "slck", "mus", "sch", "virt"]
 myWorkspaceIndices = M.fromList $ zip myWorkspaces [1..]
 
+-- Make workspaces clickable
 clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
     where i = fromJust $ M.lookup ws myWorkspaceIndices
 
-myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
-    [
-     className =? "Spotify"            --> doShift (myWorkspaces !! 5)
-    ]
-
+-- Shift windows to another workspace automatically
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
      [ className =? "confirm"           --> doFloat
@@ -158,6 +157,13 @@ myManageHook = composeAll
      , className =? "mpv"               --> doFullFloat
      ]
 
+-- Spotify is a weird case
+myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
+    [
+     className =? "Spotify"            --> doShift (myWorkspaces !! 5)
+    ]
+
+-- Main keybinds
 myKeys :: [(String, X ())]
 myKeys =
         [
@@ -227,6 +233,7 @@ myKeys =
 
 -- QWERTY and Programmer Dvorak stuff
 
+-- Go to a specific workspace
 workspaceBinds layout
   | layout == "qwerty" = qwerty
   | layout == "dvorak" = dvorak
@@ -235,6 +242,7 @@ workspaceBinds layout
         qwerty = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
         dvorak =  [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_ampersand, xK_bracketleft, xK_braceleft, xK_braceright, xK_parenleft, xK_equal, xK_asterisk, xK_parenright, xK_plus, xK_bracketright ])]
 
+-- Shift workspaces to another workspace
 workspaceShiftBinds layout
   | layout == "qwerty" = qwertyShift
   | layout == "dvorak" = dvorakShift
@@ -252,6 +260,7 @@ workspaceShiftBinds layout
                 | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_9]
                 , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
+-- XMonad defaults
 defaults xmproc0 = def
         { manageHook         = myManageHook <+> manageDocks
         , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
@@ -280,6 +289,7 @@ defaults xmproc0 = def
                       >> historyHook
         } `additionalKeys` workspaceBinds myLayout `additionalKeysP` myKeys
 
+-- Main function
 main :: IO ()
 main = do
     xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar.config"
