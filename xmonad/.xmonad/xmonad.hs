@@ -292,5 +292,5 @@ defaults xmproc0 = def
 -- Main function
 main :: IO ()
 main = do
-    xmproc0 <- spawnPipe "xmobar $HOME/.config/xmobar/xmobar.config"
+    xmproc0 <- spawnPipe "$HOME/.config/xmobar/xmobar"
     xmonad $ ewmh $ defaults xmproc0
