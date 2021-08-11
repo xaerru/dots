@@ -225,9 +225,16 @@ myKeys =
         , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
         ]
 
-workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
+-- QWERTY and Programmer Dvorak stuff
 
-dvorak = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_ampersand, xK_bracketleft, xK_braceleft, xK_braceright, xK_parenleft, xK_equal, xK_asterisk, xK_parenright, xK_plus, xK_bracketright ])]
+key x
+  | x == "qwerty" = qwerty
+  | x == "dvorak" = dvorak
+  | otherwise = qwerty
+    where
+        qwerty = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
+        dvorak =  [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_ampersand, xK_bracketleft, xK_braceleft, xK_braceright, xK_parenleft, xK_equal, xK_asterisk, xK_parenright, xK_plus, xK_bracketright ])]
+
 
 dvorakShift conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [
@@ -241,7 +248,7 @@ qwertyShift conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1..xK_9]
         , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
 
-key = if myLayout == "dvorak" then dvorak else workspaceBackAndForth
+--key = if myLayout == "dvorak" then dvorak else workspaceBackAndForth
 
 defaults xmproc0 = def
         { manageHook         = myManageHook <+> manageDocks
@@ -269,7 +276,7 @@ defaults xmproc0 = def
                               ppOrder = \ (ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
                              }
                       >> historyHook
-        } `additionalKeys` key `additionalKeysP` myKeys
+        } `additionalKeys` (key myLayout) `additionalKeysP` myKeys
 
 main :: IO ()
 main = do
