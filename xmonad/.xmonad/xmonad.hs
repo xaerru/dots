@@ -96,9 +96,6 @@ myLayout = "qwerty"
 myBrowser :: String
 myBrowser = "qutebrowser "  -- Sets qutebrowser as browser
 
-myEmacs :: String
-myEmacs = "emacsclient -c -a 'emacs' "  -- Makes emacs keybindings easier to type
-
 myEditor :: String
 myEditor = myTerminal ++ " -e nvim "    -- Sets nvim as editor
 
@@ -127,28 +124,6 @@ myStartupHook = do
     spawnOnce "element-desktop"
     setWMName "LG3D"
 
-myScratchPads :: [NamedScratchpad]
-myScratchPads = [ NS "terminal" spawnTerm findTerm manageTerm
-                , NS "calculator" spawnCalc findCalc manageCalc
-                ]
-  where
-    spawnTerm  = myTerminal ++ " -t scratchpad -e tmux attach -t dev"
-    findTerm   = title =? "scratchpad"
-    manageTerm = customFloating $ W.RationalRect l t w h
-               where
-                 h = 0.9
-                 w = 0.9
-                 t = 0.95 -h
-                 l = 0.95 -w
-    spawnCalc  = "qalculate-gtk"
-    findCalc   = className =? "Qalculate-gtk"
-    manageCalc = customFloating $ W.RationalRect l t w h
-               where
-                 h = 0.5
-                 w = 0.4
-                 t = 0.75 -h
-                 l = 0.70 -w
-
 --Makes setting the spacingRaw simpler to write. The spacingRaw module adds a configurable amount of space around windows.
 mySpacing :: Integer -> l a -> XMonad.Layout.LayoutModifier.ModifiedLayout Spacing l a
 mySpacing i = spacingRaw False (Border i i i i) True (Border i i i i) True
@@ -163,90 +138,16 @@ mySpacing' i = spacingRaw True (Border i i i i) True (Border i i i i) True
 -- mySpacing n sets the gap size around the windows.
 tall     = renamed [Replace "tall"]
            $ smartBorders
-           $ addTabs shrinkText myTabTheme
            $ subLayout [] (smartBorders Simplest)
            $ limitWindows 12
            $ mySpacing 2
            $ ResizableTall 1 (3/100) (1/2) []
-magnify  = renamed [Replace "magnify"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ magnifier
-           $ limitWindows 12
-           $ mySpacing 8
-           $ ResizableTall 1 (3/100) (1/2) []
-monocle  = renamed [Replace "monocle"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 20 Full
-floats   = renamed [Replace "floats"]
-           $ smartBorders
-           $ limitWindows 20 simplestFloat
-grid     = renamed [Replace "grid"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 12
-           $ mySpacing 8
-           $ mkToggle (single MIRROR)
-           $ Grid (16/10)
-spirals  = renamed [Replace "spirals"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ mySpacing' 8
-           $ spiral (6/7)
-threeCol = renamed [Replace "threeCol"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 7
-           $ ThreeCol 1 (3/100) (1/2)
-threeRow = renamed [Replace "threeRow"]
-           $ smartBorders
-           $ addTabs shrinkText myTabTheme
-           $ subLayout [] (smartBorders Simplest)
-           $ limitWindows 7
-           -- Mirror takes a layout and rotates it by 90 degrees.
-           -- So we are applying Mirror to the ThreeCol layout.
-           $ Mirror
-           $ ThreeCol 1 (3/100) (1/2)
-tabs     = renamed [Replace "tabs"]
-           -- I cannot add spacing to this layout because it will
-           -- add spacing between window and tabs which looks bad.
-           $ tabbed shrinkText myTabTheme
-tallAccordion  = renamed [Replace "tallAccordion"]
-             Accordion
-wideAccordion  = renamed [Replace "wideAccordion"]
-           $ Mirror Accordion
-
--- setting colors for tabs layout and tabs sublayout.
-myTabTheme = def { fontName            = myFont
-                 , activeColor         = "#88C0D0"
-                 , inactiveColor       = "#2E3440"
-                 , activeBorderColor   = "#88C0D0"
-                 , inactiveBorderColor = "#2E3440"
-                 , activeTextColor     = "#2E3440"
-                 , inactiveTextColor   = "#d0d0d0"
-                 }
 
 -- The layout hook
-myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts floats
+myLayoutHook = smartBorders $ avoidStruts $ mouseResize $ windowArrange
                $ mkToggle (NBFULL ?? NOBORDERS ?? EOT) myDefaultLayout
              where
                myDefaultLayout =     withBorder myBorderWidth tall
-                                 ||| magnify
-                                 ||| noBorders monocle
-                                 ||| floats
-                                 ||| noBorders tabs
-                                 ||| grid
-                                 ||| spirals
-                                 ||| threeCol
-                                 ||| threeRow
-                                 ||| tallAccordion
-                                 ||| wideAccordion
 
 -- myWorkspaces = [" 1 ", " 2 ", " 3 ", " 4 ", " 5 ", " 6 ", " 7 ", " 8 ", " 9 "]
 --myWorkspaces = map show [1..9]
@@ -263,10 +164,6 @@ myHandleEventHook = dynamicPropertyChange "WM_CLASS" $ composeAll
 
 myManageHook :: XMonad.Query (Data.Monoid.Endo WindowSet)
 myManageHook = composeAll
-     -- 'doFloat' forces a window to float.  Useful for dialog boxes and such.
-     -- using 'doShift ( myWorkspaces !! 7)' sends program to workspace 8!
-     -- I'm doing it this way because otherwise I would have to write out the full
-     -- name of my workspaces and the names would be very long if using clickable workspaces.
      [ className =? "confirm"           --> doFloat
      , className =? "file_progress"     --> doFloat
      , className =? "dialog"            --> doFloat
@@ -287,32 +184,24 @@ myManageHook = composeAll
      , className =? "zoom"              --> doShift ( myWorkspaces !! 7 )
      , className =? "Virt-manager"      --> doShift ( myWorkspaces !! 8 )
      , className =? "mpv"               --> doFullFloat
-     ] <+> namedScratchpadManageHook myScratchPads
+     ]
 
 myKeys :: [(String, X ())]
 myKeys =
-    -- Xmonad
         [ ("M-M1-c", spawn "xmonad --recompile")  -- Recompiles xmonad
         , ("M-M1-r", spawn "xmonad --restart")    -- Restarts xmonad
         , ("M-M1-e", io exitSuccess)              -- Quits xmonad
         , ("M-S-l", spawn "$HOME/.xmonad/scripts/switchlayout.sh")
 
-    -- Run Prompt
         , ("M-S-<Return>", spawn "dmenu_run -p 'Run:' -h 24") -- Dmenu
 
     -- Other Dmenu Prompts
     -- In Xmonad and many tiling window managers, M-p is the default keybinding to
     -- launch dmenu_run, so I've decided to use M-p plus KEY for these dmenu scripts.
-        , ("M-p c", spawn "dmcolors")  -- pick color from our scheme
         , ("M-p e", spawn "dmconf")   -- edit config files
         , ("M-p k", spawn "dmkill")   -- kill processes
-        , ("M-p m", spawn "dman")     -- manpages
-        , ("M-p o", spawn "dmqute")   -- qutebrowser bookmarks/history
         , ("M-p q", spawn "dmlogout") -- logout menu
-        , ("M-p r", spawn "dmred")    -- reddio (a reddit viewer)
         , ("M-p s", spawn "dmsearch") -- search various search engines
-        , ("M-p p", spawn "dm-pacman")-- pacman
-        , ("M-p y", spawn "dmyoutube")-- youtube
 
     -- Useful programs to have a keybinding for launch
         , ("M-<Return>", spawn "$HOME/.xmonad/scripts/terminal.sh")
@@ -327,10 +216,6 @@ myKeys =
     -- Kill windows
         , ("M-q", kill1)     -- Kill the currently focused client
         , ("M-S-q", killAll)   -- Kill all windows on current workspace
-
-    -- Workspaces
-        , ("M-S-<KP_Add>", shiftTo Next nonNSP >> moveTo Next nonNSP)       -- Shifts focused window to next ws
-        , ("M-S-<KP_Subtract>", shiftTo Prev nonNSP >> moveTo Prev nonNSP)  -- Shifts focused window to prev ws
         , ("M-u", nextMatch History (return True))-- Move to recent workspace
 
     -- Floating windows
@@ -382,13 +267,6 @@ myKeys =
         , ("M-C-.", onGroup W.focusUp')    -- Switch focus to next tab
         , ("M-C-,", onGroup W.focusDown')  -- Switch focus to prev tab
 
-    -- Scratchpads
-    -- Toggle show/hide these programs.  They run on a hidden workspace.
-    -- When you toggle them to show, it brings them to your current workspace.
-    -- Toggle them to hide and it sends them back to hidden workspace (NSP).
-        , ("C-s t", namedScratchpadAction myScratchPads "terminal")
-        , ("C-s c", namedScratchpadAction myScratchPads "calculator")
-
     -- Multimedia Keys
         , ("<XF86AudioPlay>", spawn "playerctl play-pause")
         , ("M-s p", spawn "playerctl play-pause")
@@ -407,9 +285,6 @@ myKeys =
         , ("C-<Print>", spawn "maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png")
         , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
         ]
-    -- The following lines are needed for named scratchpads.
-          where nonNSP          = WSIs (return (\ws -> W.tag ws /= "NSP"))
-                nonEmptyNonNSP  = WSIs (return (\ws -> isJust (W.stack ws) && W.tag ws /= "NSP"))
 
 workspaceBackAndForth = [((myModMask , k), bindOn [ ("", windows $ W.greedyView n), (n , toggleWS)]) |(n, k) <- zip myWorkspaces([xK_1..xK_9]++[xK_0])]
 
