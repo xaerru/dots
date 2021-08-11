@@ -227,7 +227,7 @@ myKeys =
 
 -- QWERTY and Programmer Dvorak stuff
 
-key x
+workspaceBinds x
   | x == "qwerty" = qwerty
   | x == "dvorak" = dvorak
   | otherwise = qwerty
@@ -276,7 +276,7 @@ defaults xmproc0 = def
                               ppOrder = \ (ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
                              }
                       >> historyHook
-        } `additionalKeys` (key myLayout) `additionalKeysP` myKeys
+        } `additionalKeys` workspaceBinds myLayout `additionalKeysP` myKeys
 
 main :: IO ()
 main = do
