@@ -70,25 +70,25 @@ myModMask :: KeyMask
 myModMask = mod4Mask        -- Sets modkey to super/windows key
 
 myTerminal :: String
-myTerminal = "alacritty"    -- Sets default terminal
+myTerminal = "alacritty"
 
 myLayout :: String
 myLayout = "qwerty"
 
 myBrowser :: String
-myBrowser = "qutebrowser "  -- Sets qutebrowser as browser
+myBrowser = "qutebrowser "
 
 myEditor :: String
-myEditor = myTerminal ++ " -e nvim "    -- Sets nvim as editor
+myEditor = myTerminal ++ " -e nvim "
 
 myBorderWidth :: Dimension
-myBorderWidth = 2           -- Sets border width for windows
+myBorderWidth = 2
 
 myNormColor :: String
-myNormColor   = "#2E3440"   -- Border color of normal windows
+myNormColor   = "#2E3440"
 
 myFocusColor :: String
-myFocusColor  = "#5E81AC"   -- Border color of focused windows
+myFocusColor  = "#5E81AC"
 
 windowCount :: X (Maybe String)
 windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace . W.current . windowset
