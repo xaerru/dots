@@ -193,23 +193,24 @@ myHandleEventHook = dynamicPropertyChange "WM_CLASS"
 
 combineActions :: IORef String -> M.Map String (X ()) -> X ()
 combineActions ref layoutToAction = do
-   currentLayout <- liftIO $ readIORef ref
-   fromMaybe (return ()) $ M.lookup currentLayout layoutToAction
+  currentLayout <- liftIO $ readIORef ref
+  fromMaybe (return ()) $ M.lookup currentLayout layoutToAction
 
 
-combineKeyMaps ::
-  IORef String -> [(String, M.Map (KeyMask, KeySym) (X ()))] -> M.Map (KeyMask, KeySym) (X ())
+combineKeyMaps
+  :: IORef String -> [(String, M.Map (KeyMask, KeySym) (X ()))] -> M.Map (KeyMask, KeySym) (X ())
 combineKeyMaps ref theMaps = M.map (combineActions ref) combinedMaps
-  where insertSymsInto layoutString accum keysym value =
-          let newMap = M.insert layoutString value $ M.findWithDefault M.empty keysym accum
-          in M.insert keysym newMap accum
-        insertMapSymsInto
-          :: M.Map (KeyMask, KeySym) (M.Map String (X ()))
-          -> (String, M.Map (KeyMask, KeySym) (X ()))
-          -> M.Map (KeyMask, KeySym) (M.Map String (X ()))
-        insertMapSymsInto accum (layoutString, layoutMap) =
-          M.foldlWithKey (insertSymsInto layoutString) accum layoutMap
-        combinedMaps = foldl insertMapSymsInto M.empty theMaps
+ where
+  insertSymsInto layoutString accum keysym value =
+    let newMap = M.insert layoutString value $ M.findWithDefault M.empty keysym accum
+    in  M.insert keysym newMap accum
+  insertMapSymsInto
+    :: M.Map (KeyMask, KeySym) (M.Map String (X ()))
+    -> (String, M.Map (KeyMask, KeySym) (X ()))
+    -> M.Map (KeyMask, KeySym) (M.Map String (X ()))
+  insertMapSymsInto accum (layoutString, layoutMap) =
+    M.foldlWithKey (insertSymsInto layoutString) accum layoutMap
+  combinedMaps = foldl insertMapSymsInto M.empty theMaps
 
 
 useDvorak :: IORef String -> X ()
@@ -297,8 +298,12 @@ workspaceBinds layout | layout == "qwerty" = qwerty
  where
   qwerty =
     [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
-    | (n, k) <- zip myWorkspaces ([xK_1 .. xK_9] ++ [xK_0])
+    | (n, k) <- zip myWorkspaces ([xK_1 .. xK_9])
     ]
+    ++ [ ((m .|. myModMask, k), windows $ f i)
+       | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
+       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       ]
   dvorak =
     [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
     | (n, k) <- zip
@@ -316,37 +321,22 @@ workspaceBinds layout | layout == "qwerty" = qwerty
        ]
       )
     ]
-
--- Shift workspaces to another workspace
-workspaceShiftBinds layout | layout == "qwerty" = qwertyShift
-                           | layout == "dvorak" = dvorakShift
-                           | otherwise          = qwertyShift
- where
-  dvorakShift conf@(XConfig { XMonad.modMask = modm }) =
-    M.fromList
-      $ [ ((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip
-          (XMonad.workspaces conf)
-          [ xK_ampersand
-          , xK_bracketleft
-          , xK_braceleft
-          , xK_braceright
-          , xK_parenleft
-          , xK_equal
-          , xK_asterisk
-          , xK_parenright
-          , xK_plus
-          , xK_bracketright
-          ]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-        ]
-
-  qwertyShift conf@(XConfig { XMonad.modMask = modm }) =
-    M.fromList
-      $ [ ((m .|. modm, k), windows $ f i)
-        | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
-        ]
+    ++ [ ((m .|. myModMask, k), windows $ f i)
+       | (i, k) <- zip
+         myWorkspaces
+         [ xK_ampersand
+         , xK_bracketleft
+         , xK_braceleft
+         , xK_braceright
+         , xK_parenleft
+         , xK_equal
+         , xK_asterisk
+         , xK_parenright
+         , xK_plus
+         , xK_bracketright
+         ]
+       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       ]
 
 -- XMonad defaults
 defaults ref xmproc0 keys =
@@ -358,7 +348,6 @@ defaults ref xmproc0 keys =
       , startupHook        = myStartupHook
       , layoutHook         = myLayoutHook
       , workspaces         = myWorkspaces
-      , keys               = workspaceShiftBinds myLayout
       , borderWidth        = myBorderWidth
       , normalBorderColor  = myNormColor
       , focusedBorderColor = myFocusColor
@@ -376,16 +365,18 @@ defaults ref xmproc0 keys =
                                  }
                                >> historyHook
       }
-    `additionalKeys` (M.toList $ combineKeyMaps ref
-       [ ("qwerty", M.fromList $ workspaceBinds "qwerty")
-       , ("dvorak", M.fromList $ workspaceBinds "dvorak")
-       ])
+    `additionalKeys`  (M.toList $ combineKeyMaps
+                        ref
+                        [ ("qwerty", M.fromList $ workspaceBinds "qwerty")
+                        , ("dvorak", M.fromList $ workspaceBinds "dvorak")
+                        ]
+                      )
     `additionalKeysP` keys
 
 -- Main function
 main :: IO ()
 main = do
   ref <- newIORef "qwerty"
-  let keys = myKeys ++ [("C-S-d", useDvorak ref), ("C-S-q", useQwerty ref)]
+  let keys = myKeys ++ [("C-S-d", useDvorak ref), ("C-S-w", useQwerty ref)]
   xmproc0 <- spawnPipe "$HOME/.config/xmobar/xmobar"
   xmonad $ ewmh $ defaults ref xmproc0 keys
