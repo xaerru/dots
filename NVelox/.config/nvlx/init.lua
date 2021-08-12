@@ -97,6 +97,7 @@ nvlx.settings = {
     iskeyword = vim.opt.iskeyword + { "-" } - { "_" },
     list = true,
     colorcolumn = "100",
+    relativenumber = true,
     showbreak = "↪",
     listchars = table.concat({
         "eol:↲",
