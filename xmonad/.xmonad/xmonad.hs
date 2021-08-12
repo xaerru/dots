@@ -349,7 +349,7 @@ workspaceShiftBinds layout | layout == "qwerty" = qwertyShift
         ]
 
 -- XMonad defaults
-defaults ref xmproc0 =
+defaults ref xmproc0 keys =
   def
       { manageHook         = myManageHook <+> manageDocks
       , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
@@ -380,11 +380,12 @@ defaults ref xmproc0 =
        [ ("qwerty", M.fromList $ workspaceBinds "qwerty")
        , ("dvorak", M.fromList $ workspaceBinds "dvorak")
        ])
-    `additionalKeysP` myKeys
+    `additionalKeysP` keys
 
 -- Main function
 main :: IO ()
 main = do
   ref <- newIORef "qwerty"
+  let keys = myKeys ++ [("C-S-d", useDvorak ref), ("C-S-q", useQwerty ref)]
   xmproc0 <- spawnPipe "$HOME/.config/xmobar/xmobar"
-  xmonad $ ewmh $ defaults ref xmproc0
+  xmonad $ ewmh $ defaults ref xmproc0 keys
