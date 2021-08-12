@@ -112,3 +112,26 @@ nvlx.settings = {
         [[msgsep:‾]],
     }, ","),
 }
+
+nvlx.disabled = {
+    builtin_plugins = {
+        "netrw",
+        "netrwPlugin",
+        "netrwSettings",
+        "netrwFileHandlers",
+        "gzip",
+        "zip",
+        "zipPlugin",
+        "tar",
+        "tarPlugin",
+        "getscript",
+        "getscriptPlugin",
+        "vimball",
+        "vimballPlugin",
+        "2html_plugin",
+        "logipat",
+        "rrhelper",
+        "spellfile_plugin",
+        "matchit",
+    },
+}
