@@ -191,6 +191,33 @@ myManageHook = composeAll
 myHandleEventHook = dynamicPropertyChange "WM_CLASS"
   $ composeAll [className =? "Spotify" --> doShift (myWorkspaces !! 5)]
 
+combineActions :: IORef String -> M.Map String (X ()) -> X ()
+combineActions ref layoutToAction = do
+   currentLayout <- liftIO $ readIORef ref
+   fromMaybe (return ()) $ M.lookup currentLayout layoutToAction
+
+
+combineKeyMaps ::
+  IORef String -> [(String, M.Map (KeyMask, KeySym) (X ()))] -> M.Map (KeyMask, KeySym) (X ())
+combineKeyMaps ref theMaps = M.map (combineActions ref) combinedMaps
+  where insertSymsInto layoutString accum keysym value =
+          let newMap = M.insert layoutString value $ M.findWithDefault M.empty keysym accum
+          in M.insert keysym newMap accum
+        insertMapSymsInto
+          :: M.Map (KeyMask, KeySym) (M.Map String (X ()))
+          -> (String, M.Map (KeyMask, KeySym) (X ()))
+          -> M.Map (KeyMask, KeySym) (M.Map String (X ()))
+        insertMapSymsInto accum (layoutString, layoutMap) =
+          M.foldlWithKey (insertSymsInto layoutString) accum layoutMap
+        combinedMaps = foldl insertMapSymsInto M.empty theMaps
+
+
+useDvorak :: IORef String -> X ()
+useDvorak ref = liftIO $ writeIORef ref "dvorak"
+
+useQwerty :: IORef String -> X ()
+useQwerty ref = liftIO $ writeIORef ref "qwerty"
+
 -- Main keybinds
 myKeys :: [(String, X ())]
 myKeys =
@@ -322,7 +349,7 @@ workspaceShiftBinds layout | layout == "qwerty" = qwertyShift
         ]
 
 -- XMonad defaults
-defaults xmproc0 =
+defaults ref xmproc0 =
   def
       { manageHook         = myManageHook <+> manageDocks
       , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
@@ -349,11 +376,15 @@ defaults xmproc0 =
                                  }
                                >> historyHook
       }
-    `additionalKeys`  workspaceBinds myLayout
+    `additionalKeys` (M.toList $ combineKeyMaps ref
+       [ ("qwerty", M.fromList $ workspaceBinds "qwerty")
+       , ("dvorak", M.fromList $ workspaceBinds "dvorak")
+       ])
     `additionalKeysP` myKeys
 
 -- Main function
 main :: IO ()
 main = do
+  ref <- newIORef "qwerty"
   xmproc0 <- spawnPipe "$HOME/.config/xmobar/xmobar"
-  xmonad $ ewmh $ defaults xmproc0
+  xmonad $ ewmh $ defaults ref xmproc0
