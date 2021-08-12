@@ -302,7 +302,7 @@ workspaceBinds layout | layout == "qwerty" = qwerty
     ]
     ++ [ ((m .|. myModMask, k), windows $ f i)
        | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
-       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       , (f, m) <- [ (W.shift, shiftMask)]
        ]
   dvorak =
     [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
@@ -335,7 +335,7 @@ workspaceBinds layout | layout == "qwerty" = qwerty
          , xK_plus
          , xK_bracketright
          ]
-       , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]
+       , (f, m) <- [(W.shift, shiftMask)]
        ]
 
 -- XMonad defaults
