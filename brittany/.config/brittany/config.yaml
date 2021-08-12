@@ -1,0 +1,48 @@
+conf_layout:
+  lconfig_experimentalSemicolonNewlines: false
+  lconfig_reformatModulePreamble: true
+  lconfig_alignmentBreakOnMultiline: true
+  lconfig_altChooser:
+    contents: 3
+    tag: AltChooserBoundedSearch
+  lconfig_indentAmount: 2
+  lconfig_columnAlignMode:
+    contents: 0.7
+    tag: ColumnAlignModeMajority
+  lconfig_allowHangingQuasiQuotes: true
+  lconfig_indentListSpecial: true
+  lconfig_alignmentLimit: 30
+  lconfig_importAsColumn: 50
+  lconfig_indentPolicy: IndentPolicyFree
+  lconfig_importColumn: 50
+  lconfig_indentWhereSpecial: true
+  lconfig_hangingTypeSignature: false
+  lconfig_allowSingleLineExportList: false
+  lconfig_cols: 100
+conf_forward:
+  options_ghc: []
+conf_obfuscate: false
+conf_debug:
+  dconf_dump_bridoc_simpl_alt: false
+  dconf_dump_bridoc_raw: false
+  dconf_dump_bridoc_final: false
+  dconf_dump_config: false
+  dconf_dump_bridoc_simpl_columns: false
+  dconf_dump_bridoc_simpl_par: false
+  dconf_roundtrip_exactprint_only: false
+  dconf_dump_ast_full: false
+  dconf_dump_bridoc_simpl_floating: false
+  dconf_dump_annotations: false
+  dconf_dump_ast_unknown: false
+  dconf_dump_bridoc_simpl_indent: false
+conf_preprocessor:
+  ppconf_hackAroundIncludes: false
+  ppconf_CPPMode: CPPModeAbort
+conf_disable_formatting: false
+conf_errorHandling:
+  econf_Werror: false
+  econf_produceOutputOnErrors: false
+  econf_ExactPrintFallback: ExactPrintFallbackModeInline
+  econf_omit_output_valid_check: false
+conf_version: 1
+conf_roundtrip_exactprint_only: false
