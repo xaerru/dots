@@ -1,4 +1,4 @@
-local plugins = dofile(os.getenv("HOME") .. "/.config/nvlx/plugins.lua")
+local plugins = require("plugins")
 
 nvlx.general = {
     colorscheme = "nordbuddy",
