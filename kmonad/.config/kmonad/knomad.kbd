@@ -1,0 +1,28 @@
+(defcfg
+  ;; For Linux
+  input  (device-file "/dev/input/by-id/usb-Ducky_Ducky_One2_Mini_RGB_DK-V1.08-200925-event-kbd")
+  output (uinput-sink "My KMonad output"
+    "/usr/bin/sleep 1 && /usr/bin/setxkbmap -option compose:ralt;xset r rate 300 50")
+  fallthrough true
+  allow-cmd true
+)
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+(defalias
+    cesc (tap-next-release spc lmet)
+)
+
+(deflayer mylayer
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           @cesc            ralt rmet cmp  rctl
+)
