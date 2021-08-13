@@ -23,6 +23,7 @@ c.content.blocking.adblock.lists = [
 
 # General Settings
 
+config.set("colors.webpage.preferred_color_scheme", "dark")
 c.content.pdfjs = True
 c.tabs.last_close = "close"
 c.scrolling.smooth = True
