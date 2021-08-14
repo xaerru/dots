@@ -75,6 +75,8 @@ nvlx.keybinds = {
 
     normal = {
         [";"] = ":",
+        ["Ld"] = ":set langmap=1&,2[,3{,4},5(,6=,7*,8),9+,0],&%,[7,{5,}3,(1,=9,*0,)2,+4,]6<CR>",
+        ["Lq"] = ":set langmap=<CR>"
     },
 
     object = {
@@ -83,6 +85,7 @@ nvlx.keybinds = {
 
     visual = {
         ["im"] = ":lua require('tsht').nodes()<CR>",
+        ["<C-e>"] = "<ESC>"
     },
 
     visual_block = {
