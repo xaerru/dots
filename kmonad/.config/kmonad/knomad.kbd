@@ -16,7 +16,8 @@
 )
 
 (defalias
-    cesc (tap-next-release spc lmet)
+    spc (tap-hold-next-release 175 spc lmet)
+    ctrl (tap-hold-next-release 130 esc lctl)
 )
 
 (deflayer mylayer
@@ -24,5 +25,5 @@
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
   caps a    s    d    f    g    h    j    k    l    ;    '    ret
   lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  lctl lmet lalt           @cesc            ralt rmet cmp  rctl
+  @ctrl lmet lalt           @spc            ralt rmet cmp  rctl
 )
