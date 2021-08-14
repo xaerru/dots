@@ -16,7 +16,7 @@
 )
 
 (defalias
-    cesc (tap-hold-next-release 200 spc lmet)
+    cesc (tap-next-release spc lmet)
 )
 
 (deflayer mylayer
