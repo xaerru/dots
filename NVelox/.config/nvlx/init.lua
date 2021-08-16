@@ -70,7 +70,6 @@ nvlx.keybinds = {
         ["jj"] = "<Right>",
         ["<C-j>"] = "<ESC>:m .+1<CR>==i",
         ["<C-k>"] = "<ESC>:m .-2<CR>==i",
-        [";;"] = "<ESC>A;",
     },
 
     normal = {
