@@ -6,8 +6,13 @@ return {
     },
 
     {
+        "neovimhaskell/haskell-vim",
+        ft = "haskell",
+    },
+
+    {
         "iamcco/markdown-preview.nvim",
-        config = function ()
+        config = function()
             vim.g.mkdp_auto_start = 1
         end,
         ft = "markdown",
