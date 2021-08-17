@@ -17,7 +17,7 @@
 
 (defalias
     spc (tap-hold-next-release 175 spc lmet)
-    ctrl (tap-hold-next-release 130 esc lctl)
+    ctrl (tap-hold-next-release 100 esc lctl)
 )
 
 (deflayer mylayer
