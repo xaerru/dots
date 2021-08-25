@@ -17,7 +17,7 @@ nvlx.general = {
     },
 }
 
-nvlx.config.plugins.whichkey = {
+nvlx.keybinds.leader = {
     normal = {
         H = {
             {
@@ -65,7 +65,7 @@ nvlx.config.plugins.whichkey = {
     },
 }
 
-nvlx.keybinds = {
+nvlx.keybinds.general = {
     insert = {
         ["jj"] = "<Right>",
         ["<C-j>"] = "<ESC>:m .+1<CR>==i",
