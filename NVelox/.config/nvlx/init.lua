@@ -56,7 +56,7 @@ nvlx.keybinds.leader = {
         },
     },
     {
-        [";;"] = { "which_key_ignore", mode = "i" },
+        --[";;"] = { "which_key_ignore", mode = "i" },
         ["<leader><TAB>"] = { "<CMD>:BufferLineCyclePrev<CR>", "Previous Buffer" },
         ["<leader>f"] = { [[<CMD>%s/\s\+$//e | noh | Neoformat | write<CR>]], "Format" },
         ["<leader>j"] = { "<CMD><ESC>:m .+1<CR>==<CR>", "Move Line Down" },
