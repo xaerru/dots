@@ -1,4 +1,5 @@
 fish/.config/fish/fish_variables
+fish/.config/fish/secret.fish
 functions
 __pycache__
 xmonad-x86_64-linux
