@@ -7,6 +7,16 @@
   allow-cmd true
 )
 
+#| --------------------------------------------------------------------------
+(deflayer dvp
+    $   &  [   {     }   \(    =    *    \)   +    ]    !    #  bspc
+    tab   ;    ,    .    p    y    f    g    c    r    l    /    @    \
+    caps   a    o    e    u    i    d    h    t    n    s    -   ret
+    @shft     '    q    j    k    x    b    m    w    v    z     rsft
+    @ctrl lmet lalt               @spc              ralt rmet cmp rctl
+)
+  -------------------------------------------------------------------------- |#
+
 (defsrc
   grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
@@ -18,12 +28,21 @@
 (defalias
     spc (tap-hold-next-release 175 spc lmet)
     ctrl (tap-hold-next-release 150 esc lctl)
+    shft (layer-toggle shift)
 )
 
-(deflayer mylayer
-  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
-  caps a    s    d    f    g    h    j    k    l    ;    '    ret
-  lsft z    x    c    v    b    n    m    ,    .    /    rsft
-  @ctrl lmet lalt           @spc            ralt rmet cmp  rctl
+(deflayer dvp
+    $   &  [   {     }   \(    =    *    \)   +    ]    !    #  bspc
+    tab   ;    ,    .    p    y    f    g    c    r    l    /    @    \
+    caps   a    o    e    u    i    d    h    t    n    s    -   ret
+    @shft     '    q    j    k    x    b    m    w    v    z     rsft
+    @ctrl lmet lalt               @spc              ralt rmet cmp rctl
+)
+
+(deflayer shift
+    ~   %  7   5     3    1    9    0    2    4    6    8    grv bspc
+    tab   :    <    >    P    Y    F    G    C    R    L    ?    ^   |
+    caps   A    O    E    U    I    D    H    T    N    S   \_   ret
+    @shft     ~    Q    J    K    X    B    M    W    V    Z     rsft
+    lctl lmet lalt                spc              ralt rmet cmp rctl
 )
