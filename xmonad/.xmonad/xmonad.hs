@@ -261,73 +261,10 @@ myKeys =
   , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
   ]
 
--- QWERTY and Programmer Dvorak stuff
-
-combineActions :: M.Map String (X ()) -> X ()
-combineActions layoutToAction = do
-  home          <- liftIO $ getEnv "HOME"
-  currentLayout <- runProcessWithInput (home ++ "/.xmonad/scripts/echolayout.sh") [] ""
-  fromMaybe (return ()) $ M.lookup currentLayout layoutToAction
-
-combineKeyMaps :: [(String, M.Map (KeyMask, KeySym) (X ()))] -> M.Map (KeyMask, KeySym) (X ())
-combineKeyMaps theMaps = M.map combineActions combinedMaps
- where
-  insertSymsInto layoutString accum keysym value =
-    let newMap = M.insert layoutString value $ M.findWithDefault M.empty keysym accum
-    in  M.insert keysym newMap accum
-  insertMapSymsInto
-    :: M.Map (KeyMask, KeySym) (M.Map String (X ()))
-    -> (String, M.Map (KeyMask, KeySym) (X ()))
-    -> M.Map (KeyMask, KeySym) (M.Map String (X ()))
-  insertMapSymsInto accum (layoutString, layoutMap) =
-    M.foldlWithKey (insertSymsInto layoutString) accum layoutMap
-  combinedMaps = foldl insertMapSymsInto M.empty theMaps
-
-workspaceBinds layout | layout == "qwerty" = qwerty
-                      | layout == "dvorak" = dvorak
-                      | otherwise          = qwerty
- where
-  qwerty =
-    [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
-    | (n, k) <- zip myWorkspaces ([xK_1 .. xK_9])
-    ]
-    ++ [ ((m .|. myModMask, k), windows $ f i)
-       | (i, k) <- zip myWorkspaces [xK_1 .. xK_9]
-       , (f, m) <- [(W.shift, shiftMask)]
-       ]
-  dvorak =
-    [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
-    | (n, k) <- zip
-      myWorkspaces
-      ([ xK_ampersand
-       , xK_bracketleft
-       , xK_braceleft
-       , xK_braceright
-       , xK_parenleft
-       , xK_equal
-       , xK_asterisk
-       , xK_parenright
-       , xK_plus
-       , xK_bracketright
-       ]
-      )
-    ]
-    ++ [ ((m .|. myModMask, k), windows $ f i)
-       | (i, k) <- zip
-         myWorkspaces
-         [ xK_ampersand
-         , xK_bracketleft
-         , xK_braceleft
-         , xK_braceright
-         , xK_parenleft
-         , xK_equal
-         , xK_asterisk
-         , xK_parenright
-         , xK_plus
-         , xK_bracketright
-         ]
-       , (f, m) <- [(W.shift, shiftMask)]
-       ]
+workspaceBackAndForth =
+  [ ((myModMask, k), bindOn [("", windows $ W.greedyView n), (n, toggleWS)])
+  | (n, k) <- zip myWorkspaces ([xK_1 .. xK_9] ++ [xK_0])
+  ]
 
 -- XMonad defaults
 defaults xmproc0 =
@@ -356,11 +293,7 @@ defaults xmproc0 =
                                  }
                                >> historyHook
       }
-    `additionalKeys`  (M.toList $ combineKeyMaps
-                        [ ("us" , M.fromList $ workspaceBinds "qwerty")
-                        , ("dvp", M.fromList $ workspaceBinds "dvorak")
-                        ]
-                      )
+    `additionalKeys`  workspaceBackAndForth
     `additionalKeysP` myKeys
 
 -- Main function
