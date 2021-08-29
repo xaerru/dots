@@ -26,12 +26,13 @@
 )
 
 (defalias
-    spc (tap-hold-next-release 175 spc lmet)
     ctrl (tap-hold-next-release 150 esc lctl)
     shft (around (layer-toggle shift) shft)
-    ass (around (cmd-button "setxkbmap gb") (layer-switch qwerty))
     mod (around (layer-toggle mod) lmet)
     modshft (around (layer-toggle modshft) shft)
+    qw  (layer-switch qwerty)
+    dvp  (layer-switch dvp)
+    spc (tap-hold-next-release 175 spc @mod)
 )
 
 (deflayer dvp
@@ -59,17 +60,40 @@
 )
 
 (deflayer modshft
-    _   1  2   3     4   5    6    7    8   9    0    !    #  bspc
+    _   1  2   3     4   5    6    7    8   9    0    !    #  @qw
     _   _    _    _    _    _    _    _    _    _    _    _    _   _
     _   _    _    _    _    _    _    _    _    _    _   _   _
     _     _    _    _    _    _    _    _    _    _    _     rsft
     _     _    _                  spc               _    _    _  _
 )
 
-(deflayer qwerty
-    grv 1  2   3     4   5     6    7    8    9    0    -    =  bspc
-    tab   q    w    e    r    t    y    u    i    o    p    [    ]   \
-    caps   a    s    d    f    g    h    j    k    l    ;    '    ret
-    lsft      z    x    c    v    b    n    m    ,    .    /    rsft
-    @ctrl  lmet lalt               @spc               ralt rmet cmp rctl
+(defalias 
+    qwmod (around (layer-toggle qwmod) lmet)
+    qwmodshft (around (layer-toggle qwmodshft) shft)
+    qwspc (tap-hold-next-release 175 spc @qwmod)
 )
+
+(deflayer qwerty
+    grv 1  2   3     4    5    6    7    8    9    0    -    =  bspc
+    tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
+    caps   a    s    d    f    g    h    j    k    l    ;    '   ret
+    lsft     z    x    c    v    b    n    m    ,    .    /     rsft
+    @ctrl @qwmod lalt               @qwspc              ralt rmet cmp rctl
+)
+
+(deflayer qwmod
+    _   1  2   3     4   5    6    7    8   9    0    !    #  bspc
+    _   _    _    _    _    _    _    _    _    _    _    _    _   _
+    _   _    _    _    _    _    _    _    _    _    _   _   _
+    @qwmodshft     _    _    _    _    _    _    _    _    _    _     rsft
+    _     _    _                  spc               _    _    _  _
+)
+
+(deflayer qwmodshft
+    _   1  2   3     4   5    6    7    8   9    0    !    #  @dvp
+    _   _    _    _    _    _    _    _    _    _    _    _    _   _
+    _   _    _    _    _    _    _    _    _    _    _   _   _
+    _     _    _    _    _    _    _    _    _    _    _     rsft
+    _     _    _                  spc               _    _    _  _
+)
+
