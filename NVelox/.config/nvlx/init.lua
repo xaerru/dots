@@ -95,6 +95,10 @@ nvlx.keybinds.general = {
 
 nvlx.plugins = plugins
 
+nvlx.config.plugins.gitsigns = {
+    word_diff = true
+}
+
 nvlx.settings = {
     iskeyword = vim.opt.iskeyword + { "-" } - { "_" },
     list = true,
