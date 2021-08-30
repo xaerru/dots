@@ -27,7 +27,7 @@
 
 (defalias
     ctrl (tap-hold-next-release 150 esc lctl)
-    shft (around (layer-toggle shift) shft)
+    shft (layer-toggle shift)
     mod (around (layer-toggle mod) lmet)
     modshft (around (layer-toggle modshft) shft)
     qw  (layer-switch qwerty)
