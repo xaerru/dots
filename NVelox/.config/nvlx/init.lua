@@ -75,8 +75,6 @@ nvlx.keybinds.general = {
 
     normal = {
         [";"] = ":",
-        ["Ld"] = ":set langmap=1&,2[,3{,4},5(,6=,7*,8),9+,0],&%,[7,{5,}3,(1,=9,*0,)2,+4,]6<CR>",
-        ["Lq"] = ":set langmap=<CR>",
     },
 
     object = {
@@ -151,5 +149,3 @@ nvlx.disabled = {
         "matchit",
     },
 }
-
-vim.cmd([[set langmap=1&,2[,3{,4},5(,6=,7*,8),9+,0],&%,[7,{5,}3,(1,=9,*0,)2,+4,]6<CR>]])
