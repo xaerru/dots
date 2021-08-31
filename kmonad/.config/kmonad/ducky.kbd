@@ -8,12 +8,12 @@
 )
 
 #| --------------------------------------------------------------------------
-(deflayer dvp
-    $   &  [   {     }   \(    =    *    \)   +    ]    !    #  bspc
-    tab   ;    ,    .    p    y    f    g    c    r    l    /    @    \
-    caps   a    o    e    u    i    d    h    t    n    s    -   ret
-    @shft     '    q    j    k    x    b    m    w    v    z     rsft
-    @ctrl lmet lalt               @spc              ralt rmet cmp rctl
+(deflayer name
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _     _   _   _   _   _   _   _   _   _   _   _   _   _
+    _      _   _   _   _   _   _   _   _   _   _   _   _
+    _       _   _   _   _   _   _   _   _   _   _     _
+    _     _    _                  _                 _    _    _   _
 )
   -------------------------------------------------------------------------- |#
 
@@ -28,6 +28,7 @@
 (defalias
     ctrl (tap-hold-next-release 100 esc lctl)
     shft (layer-toggle shift)
+    rshft (layer-toggle rshift)
     tab (around lsft tab)
     mod (around (layer-toggle mod) lmet)
     modshft (around (layer-toggle modshft) shft)
@@ -37,21 +38,28 @@
 )
 
 (deflayer dvp
-    $   *  =   [    \(    {    &    @    }   \)    ]    `    |   bspc
-    tab   ;    ,    .    p    y    f    g    c    r    l    /     -   \
-    caps   a    o    e    u    i    d    h    t    n    s    +   ret
-    @shft     '    q    j    k    x    b    m    w    v    z     rsft
+    $   *   =   [  \(   {   &   @   }  \)   ]   `   |   bspc
+    tab   ;   ,   .   p   y   f   g   c   r   l   /   -   \
+    caps   a   o   e   u   i   d   h   t   n   s   +   ret
+    @shft   '   q   j   k   x   b   m   w   v   z     @rshft
     @ctrl @mod lalt               @spc              ralt rmet cmp rctl
 )
 
 (deflayer shift
-    ~   1  2   3     4    5    6    7    8    9    0    %    !   bspc
-    @tab   :    <    >    P    Y    F    G    C    R    L    ?    \_   #
-    _   A    O    E    U    I    D    H    T    N    S     ^   _
-    _     "    Q    J    K    X    B    M    W    V    Z     rsft
-    _     _    _                  spc               _    _    _  _
+    ~   1   2   3   4   5   6   7   8   9   0   %   !   bspc
+    @tab  :   <   >   P   Y   F   G   C   R   L   ?  \_   #
+    _      A   O   E   U   I   D   H   T   N   S   ^   _
+    _       "   Q   J   K   X   B   M   W   V   Z     rsft
+    _     _    _                  spc               _    _    _   _
 )
 
+(deflayer rshift
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _     7   8   9   _   _   _   _   _   _   _   _   _   _
+    _      4   5   6   _   _   _   _   _   _   _   _   _
+    _       1   2   3   _   _   _   _   _   _   _     _
+    _     _    _                  _                 _    _    _   _
+)
 
 (deflayer mod
     _   1  2   3     4   5    6    7    8   9    0    !    #  bspc
