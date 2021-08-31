@@ -3,6 +3,7 @@ local plugins = require("plugins")
 nvlx.general = {
     colorscheme = "nordbuddy",
     autosave = true,
+    winblend = 25,
     highlights = {
         TSNodeKey = {
             cterm = "bold",
