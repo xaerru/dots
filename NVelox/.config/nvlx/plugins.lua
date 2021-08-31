@@ -54,7 +54,7 @@ return {
     {
         "mfussenegger/nvim-ts-hint-textobject",
         config = function()
-            require("tsht").config.hint_keys = { "h", "j", "f", "d", "n", "v", "s", "l", "a" }
+            require("tsht").config.hint_keys = { "a", "o", "e", "i", "d", "h", "t", "n" }
         end,
         after = "nvim-treesitter",
     },
@@ -63,7 +63,7 @@ return {
         "mizlan/iswap.nvim",
         config = function()
             require("iswap").setup({
-                keys = "hjfdnvsla",
+                keys = "aoeuidhtn",
             })
         end,
         after = "nvim-treesitter",
