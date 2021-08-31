@@ -99,6 +99,13 @@ nvlx.config.plugins.gitsigns = {
     word_diff = true
 }
 
+nvlx.config.plugins.autopairs = {
+    fast_wrap = {
+        end_key = "-",
+        keys = "aoeuidhtns",
+    },
+}
+
 nvlx.settings = {
     iskeyword = vim.opt.iskeyword + { "-" } - { "_" },
     list = true,
