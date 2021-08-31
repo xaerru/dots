@@ -26,18 +26,18 @@
 )
 
 (defalias
-    ctrl (tap-hold-next-release 150 esc lctl)
+    ctrl (tap-hold-next-release 100 esc lctl)
     shft (layer-toggle shift)
     tab (around lsft tab)
     mod (around (layer-toggle mod) lmet)
     modshft (around (layer-toggle modshft) shft)
     qw  (layer-switch qwerty)
     dvp  (layer-switch dvp)
-    spc (tap-hold-next-release 175 spc @mod)
+    spc (tap-hold-next-release 150 spc @mod)
 )
 
 (deflayer dvp
-    $   &  [   {     }   \(    =    *    \)   +    ]    !    `  bspc
+    $   +  [    \(    {   &    =    *    }    \)    ]    !    `  bspc
     tab   ;    ,    .    p    y    f    g    c    r    l    /    @    \
     caps   a    o    e    u    i    d    h    t    n    s    -   ret
     @shft     '    q    j    k    x    b    m    w    v    z     rsft
