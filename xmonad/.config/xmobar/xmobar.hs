@@ -19,7 +19,7 @@ config = defaultConfig
                       -- Time and date
       Run $ Date "%a %B %e %H:%M" "date" 50
                       -- Network up and down
-    , Run $ Network "wlo1" ["-t", "<fn=2>\xf019</fn> <rx>kb <fn=2>\xf093</fn> <tx>kb"] 20
+    , Run $ Network "wlan0" ["-t", "<fn=2>\xf019</fn> <rx>kb <fn=2>\xf093</fn> <tx>kb"] 20
                       -- Cpu usage in percent
     , Run $ Cpu ["-t", "<fn=2>\xf108</fn> <total>%"] 20
                       -- Ram used number and percent
@@ -57,7 +57,7 @@ config = defaultConfig
   , sepChar         = "%"
   , alignSep        = "}{"
   , template        =
-    " <fc=#A3BE8C>grvxs</fc> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#A3BE8C>%music%</fc> <fc=#666666>|</fc> <fc=#8FBCBB>%uname%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%disku%</fc> <fc=#666666>|</fc> <fc=#B48EAD>Vol: %sound%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%memory%</fc> <fc=#666666>|</fc> <fc=#B48EAD>%cpu%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%wlo1%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%battery%</fc> <fc=#666666>|</fc> <fc=#D8DEE9>%date%</fc>%trayerpad%"
+    " <fc=#A3BE8C>grvxs</fc> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#A3BE8C>%music%</fc> <fc=#666666>|</fc> <fc=#8FBCBB>%uname%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%disku%</fc> <fc=#666666>|</fc> <fc=#B48EAD>Vol: %sound%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%memory%</fc> <fc=#666666>|</fc> <fc=#B48EAD>%cpu%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%wlan0%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%battery%</fc> <fc=#666666>|</fc> <fc=#D8DEE9>%date%</fc>%trayerpad%"
   }
 
 main :: IO ()
