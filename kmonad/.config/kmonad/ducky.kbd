@@ -35,7 +35,7 @@
     modshft (around (layer-toggle modshft) shft)
     qw  (layer-switch qwerty)
     dvp  (layer-switch dvp)
-    spc (tap-hold-next-release 175 spc @mod)
+    spc (tap-hold-next-release 150 spc @mod)
 )
 
 (deflayer dvp
