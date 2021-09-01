@@ -68,4 +68,9 @@ return {
         end,
         after = "nvim-treesitter",
     },
+
+    {
+        "JoseConseco/vim-case-change",
+        after = "nordbuddy"
+    },
 }
