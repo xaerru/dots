@@ -132,8 +132,6 @@ myStartupHook = do
   --spawnOnce " hsetroot -solid '#2E3440'"
   spawnOnce "~/.fehbg"
   spawnOnce "discord"
-  spawnOnce "slack"
-  spawnOnce "element-desktop"
   setWMName "LG3D"
 
 -- mySpacing helps to set gaps
