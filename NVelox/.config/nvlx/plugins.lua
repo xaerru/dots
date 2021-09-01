@@ -7,6 +7,7 @@ return {
 
     {
         "neovimhaskell/haskell-vim",
+        event = "BufRead",
         ft = "haskell",
     },
 
