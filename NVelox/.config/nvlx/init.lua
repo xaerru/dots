@@ -62,7 +62,6 @@ nvlx.keybinds.leader = {
         ["<leader>f"] = { [[<CMD>%s/\s\+$//e | noh | Neoformat | write<CR>]], "Format" },
         ["<leader>j"] = { "<CMD><ESC>:m .+1<CR>==<CR>", "Move Line Down" },
         ["<leader>k"] = { "<CMD><ESC>:m .-2<CR>==<CR>", "Move Line Up" },
-        ["<leader>n"] = { "<CMD>NvimTreeToggle<CR>", "Nvim Tree Toggle" },
     },
 }
 
