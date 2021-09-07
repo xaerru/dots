@@ -14,7 +14,7 @@ set -gx PATH "$HOME/.cabal/bin" $PATH;
 # Exports
 export QT_QPA_PLATFORMTHEME=qt5ct
 export EDITOR='nvim'
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim +Man!"
 export SHELL=/usr/bin/fish
 export NNN_PLUG='o:fzopen;v:imgview;s:preview-tui;'
 set --export NNN_FIFO "/tmp/nnn.fifo"
