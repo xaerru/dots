@@ -89,6 +89,9 @@ nvlx.keybinds.general = {
         ["J"] = ":m '>+1<CR>gv=gv",
         ["K"] = ":m '<-2<CR>gv=gv",
     },
+    command = {
+        ["w!!"] = "execute 'silent! write !sudo tee % >/dev/null' <bar> edit!"
+    }
 }
 
 nvlx.plugins = plugins
