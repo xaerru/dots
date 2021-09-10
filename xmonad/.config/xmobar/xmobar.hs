@@ -14,6 +14,7 @@ config = defaultConfig
   , hideOnStart     = False
   , allDesktops     = True
   , persistent      = True
+  , iconRoot        = ".xmonad/xpm/"  -- default: "."
   , commands        =
     [
                       -- Time and date
@@ -57,7 +58,7 @@ config = defaultConfig
   , sepChar         = "%"
   , alignSep        = "}{"
   , template        =
-    " <fc=#A3BE8C>grvxs</fc> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#A3BE8C>%music%</fc> <fc=#666666>|</fc> <fc=#8FBCBB>%uname%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%disku%</fc> <fc=#666666>|</fc> <fc=#B48EAD>Vol: %sound%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%memory%</fc> <fc=#666666>|</fc> <fc=#B48EAD>%cpu%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%wlan0%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%battery%</fc> <fc=#666666>|</fc> <fc=#D8DEE9>%date%</fc>%trayerpad%"
+    " <icon=profile.xpm/> <fc=#666666>|</fc> %UnsafeStdinReader% }{ <fc=#A3BE8C>%music%</fc> <fc=#666666>|</fc> <fc=#8FBCBB>%uname%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%disku%</fc> <fc=#666666>|</fc> <fc=#B48EAD>Vol: %sound%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%memory%</fc> <fc=#666666>|</fc> <fc=#B48EAD>%cpu%</fc> <fc=#666666>|</fc> <fc=#88C0D0>%wlan0%</fc> <fc=#666666>|</fc> <fc=#A3BE8C>%battery%</fc> <fc=#666666>|</fc> <fc=#D8DEE9>%date%</fc>%trayerpad%"
   }
 
 main :: IO ()
