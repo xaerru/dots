@@ -20,6 +20,10 @@ return {
     },
 
     {
+        "chaoren/vim-wordmotion"
+    },
+
+    {
         "andweeb/presence.nvim",
         config = function()
             require("presence"):setup({
