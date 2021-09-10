@@ -1,3 +1,4 @@
+local nvlx = require("_nvlx.defaults")
 local plugins = require("plugins")
 
 nvlx.general = {
@@ -151,3 +152,4 @@ nvlx.disabled = {
         "matchit",
     },
 }
+return nvlx
