@@ -277,19 +277,21 @@ defaults xmproc0 =
       , borderWidth        = myBorderWidth
       , normalBorderColor  = myNormColor
       , focusedBorderColor = myFocusColor
-      , logHook            = dynamicLogWithPP xmobarPP
-                                 { ppOutput          = hPutStrLn xmproc0
-                                 , ppCurrent = xmobarColor "#A3BE8C" "" . wrap "[" "]" . clickable
-                                 , ppVisible         = xmobarColor "#A3BE8C" "" . clickable
-                                 , ppHidden = xmobarColor "#81A1C1" "" . wrap "*" "" . clickable
-                                 , ppHiddenNoWindows = xmobarColor "#B48EAD" "" . clickable
-                                 , ppTitle           = xmobarColor "#D8DEE9" "" . shorten 100
-                                 , ppSep             = "<fc=#4C566A> <fn=1>|</fn> </fc>"
-                                 , ppUrgent          = xmobarColor "#BF616A" "" . wrap "!" "!"
-                                 , ppExtras          = [windowCount]
-                                 , ppOrder           = \(ws : l : t : ex) -> [ws, l] ++ ex ++ [t]
-                                 }
-                               >> historyHook
+      , logHook            =
+        dynamicLogWithPP xmobarPP
+            { ppOutput          = \x -> hPutStrLn xmproc0 x                          -- xmobar on monitor 1
+            , ppCurrent         = xmobarColor "#A3BE8C" ""
+                                    . wrap "<box type=Bottom width=2 mb=2 color=#A3BE8C>" "</box>"         -- Current workspace
+            , ppVisible         = xmobarColor "#A3BE8C" "" . clickable              -- Visible but not current workspace
+            , ppHidden          = xmobarColor "#81A1C1" "" . clickable -- Hidden workspaces
+            , ppHiddenNoWindows = xmobarColor "#B48EAD" "" . clickable     -- Hidden workspaces (no windows)
+            , ppTitle           = xmobarColor "#b3afc2" "" . shorten 60               -- Title of active window
+            , ppSep             = "<fc=#4C566A> <fn=1>|</fn> </fc>"                    -- Separator character
+            , ppUrgent          = xmobarColor "#BF616A" "" . wrap "!" "!"            -- Urgent workspace
+            , ppExtras          = [windowCount]                                     -- # of windows current workspace
+            , ppOrder           = \(ws : l : t : ex) -> [ws, l] ++ ex ++ [t]                    -- order of things in xmobar
+            }
+          >> historyHook
       }
     `additionalKeys`  workspaceBackAndForth
     `additionalKeysP` myKeys
