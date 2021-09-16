@@ -10,6 +10,7 @@ source $OMF_PATH/init.fish
 set -gx PATH "$HOME/.cargo/bin" $PATH;
 set -gx PATH "$HOME/.local/bin" $PATH;
 set -gx PATH "$HOME/.cabal/bin" $PATH;
+set -gx PATH "$HOME/.local/share/gem/ruby/3.0.0/bin" $PATH;
 
 # Exports
 export QT_QPA_PLATFORMTHEME=qt5ct
