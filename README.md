@@ -1,8 +1,6 @@
 # Nord XMonad dotfiles.
 
-![image](https://user-images.githubusercontent.com/65955464/127962851-4314fc26-f4b7-4819-849f-225019ce4acc.png)
-
-![image](https://user-images.githubusercontent.com/65955464/127491614-eb247e32-078f-4052-8599-44eed97ceab1.png)
+![image](https://user-images.githubusercontent.com/65955464/133566032-ec18cffa-5159-42f8-81d5-8e234de9aea9.png)
 
 # Info
 
