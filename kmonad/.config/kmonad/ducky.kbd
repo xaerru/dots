@@ -40,7 +40,7 @@
 )
 
 (deflayer dvp
-    &    $   +   [  \(   {   *   `   }  \)   ]   @   |   bspc
+    @    $   *   [  \(   {   +   #   }  \)   ]   &   |   bspc
     tab   ;   ,   .   p   y   f   g   c   r   l   /   \_   \
     caps   a   o   e   u   i   d   h   t   n   s   -   ret
     @shft   '   q   j   k   x   b   m   w   v   z     @rshft
@@ -49,7 +49,7 @@
 
 (deflayer shift
     ~    1   2   3   4   5   6   7   8   9   0   %   !   _
-    @tab  :   <   >   P   Y   F   G   C   R   L   ?  ^   #
+    @tab  :   <   >   P   Y   F   G   C   R   L   ?  ^   `
     _      A   O   E   U   I   D   H   T   N   S   =   @sret
     _       "   Q   J   K   X   B   M   W   V   Z     _
     @cesc     _    _                  _                 _    _    _   _
