@@ -256,7 +256,7 @@ myKeys =
   , ( "C-<Print>"
     , spawn "maim -u -i $(xdotool getactivewindow) | xclip -selection clipboard -t image/png"
     )
-  , ("C-S-<Print>", spawn "maim -u | xclip -selection clipboard -t image/png")
+  , ("M-S-s", spawn "maim -u | xclip -selection clipboard -t image/png")
   ]
 
 workspaceBackAndForth =
