@@ -82,7 +82,7 @@
 (defalias 
     qwmod (around (layer-toggle qwmod) lmet)
     qwmodshft (around (layer-toggle qwmodshft) shft)
-    qwspc (tap-hold-next-release 175 spc @qwmod)
+    qwspc (tap-hold-next-release 250 spc @qwmod)
 )
 
 (deflayer qwerty
