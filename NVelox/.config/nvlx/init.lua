@@ -1,25 +1,24 @@
-local nvlx = require("_nvlx.empty_config")
+--local nvlx = require("_nvlx.empty_config")
 
 nvlx.general = {
     colorscheme = "nordbuddy",
     autosave = true,
     winblend = 25,
+    highlights = {
+        TSNodeKey = {
+            cterm = "bold",
+            ctermfg = 198,
+            gui = "bold",
+            guifg = "#8fbcbb",
+        },
+        TSNodeUnmatched = {
+            ctermfg = 242,
+            guifg = "#4c566a",
+        },
+    },
 }
 
-nvlx.highlights = {
-    TSNodeKey = {
-        cterm = "bold",
-        ctermfg = 198,
-        gui = "bold",
-        guifg = "#8fbcbb",
-    },
-    TSNodeUnmatched = {
-        ctermfg = 242,
-        guifg = "#4c566a",
-    },
-}
-
-nvlx.maps.leader = {
+nvlx.keybinds.leader = {
     normal = {
         H = {
             {
@@ -66,7 +65,7 @@ nvlx.maps.leader = {
     },
 }
 
-nvlx.maps.general = {
+nvlx.keybinds.general = {
     insert = {
         ["jj"] = "<Right>",
         ["<C-j>"] = "<ESC>:m .+1<CR>==i",
@@ -233,4 +232,4 @@ nvlx.plugins = {
     },
 }
 
-return nvlx
+--return nvlx
