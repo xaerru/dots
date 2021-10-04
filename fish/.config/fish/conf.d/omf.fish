@@ -33,6 +33,7 @@ alias cr='cargo run'
 alias cb='cargo build'
 alias ca='cargo add'
 alias cw='cargo watch'
+alias m='make'
 # Changing "ls" to "exa"
 alias ls='exa -l --color=always --group-directories-first --icons'
 alias la='exa -al --color=always --group-directories-first --icons'
