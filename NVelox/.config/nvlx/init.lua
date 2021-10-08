@@ -105,7 +105,7 @@ nvlx.config.plugins.autopairs = {
     },
 }
 
-nvlx.options = {
+nvlx.settings = {
     iskeyword = vim.opt.iskeyword + { "-" } - { "_" },
     list = true,
     colorcolumn = "100",
