@@ -5,7 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER="nvim +Man!"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export SHELL=/usr/bin/fish
 
