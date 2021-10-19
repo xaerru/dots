@@ -16,4 +16,4 @@ settings:
   statusbar.show:
     global: always
   tabs.show:
-    global: never
+    global: always
