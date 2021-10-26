@@ -55,7 +55,7 @@ alias p="paru"
 alias c="clear"
 alias cdc="cd && clear"
 alias gc="git clone"
-alias lz='lazygit'
+alias lg='lazygit'
 # Changing "ls" to "exa"
 alias ls='exa -l --color=always --group-directories-first --icons'
 alias la='exa -al --color=always --group-directories-first --icons'
