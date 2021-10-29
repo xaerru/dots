@@ -72,7 +72,4 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
 alias ..="cd .."
 alias ...="cd ../.."
-source "$HOME/.cargo/env"
 . "$HOME/.cargo/env"
-
-source /home/grvxs/.config/broot/launcher/bash/br
