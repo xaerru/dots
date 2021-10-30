@@ -46,8 +46,8 @@ import           XMonad.Hooks.DynamicProperty
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks       ( ToggleStruts(..)
                                                 , avoidStruts
-                                                , docksEventHook
                                                 , manageDocks
+                                                , docks
                                                 )
 import           XMonad.Hooks.ManageHelpers     ( doFullFloat
                                                 , isFullscreen
@@ -268,7 +268,7 @@ workspaceBackAndForth =
 defaults xmproc0 =
   def
       { manageHook         = myManageHook <+> manageDocks
-      , handleEventHook    = docksEventHook <+> fullscreenEventHook <+> myHandleEventHook
+      , handleEventHook    = myHandleEventHook
       , modMask            = myModMask
       , terminal           = myTerminal
       , startupHook        = myStartupHook
@@ -300,4 +300,4 @@ defaults xmproc0 =
 main :: IO ()
 main = do
   xmproc0 <- spawnPipe "$HOME/.config/xmobar/xmobar"
-  xmonad $ ewmh $ defaults xmproc0
+  xmonad $ ewmhFullscreen $ ewmh $ docks $ defaults xmproc0
