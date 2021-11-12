@@ -1,5 +1,5 @@
 (defcfg
-  input  (device-file "/dev/input/by-id/usb-Ducky_Ducky_One2_Mini_RGB_DK-V1.08-200925-event-kbd")
+  input  (device-file "/dev/input/by-id/usb-Ducky_Ducne2_Mini_RGB_DK-V1.08-200925-event-kbd")
   output (uinput-sink "My KMonad output"
     "/usr/bin/sleep 1 && /usr/bin/setxkbmap -option compose:ralt;xset r rate 300 70")
   fallthrough true
