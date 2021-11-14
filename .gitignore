@@ -9,3 +9,4 @@ xmonad.errors
 session
 .stack-work
 stack.yaml.lock
+lazygit/.config/lazygit/state.yml
