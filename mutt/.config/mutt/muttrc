@@ -1,0 +1,12 @@
+set folder = "imaps://xaerru@disroot.org"
+set smtp_url = "smtps://xaerru@disroot.org:465"
+
+set spoolfile = "+Inbox"
+set record = "+Sent"
+set trash = "+Trash"
+set postponed = "+Drafts"
+
+set from = "xaerru@disroot.org"
+set realname = "Gauravsingh Sisodia"
+
+mailboxes =Inbox =Sent =Trash =Drafts
