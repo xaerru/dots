@@ -46,8 +46,8 @@ import           XMonad.Hooks.DynamicProperty
 import           XMonad.Hooks.EwmhDesktops
 import           XMonad.Hooks.ManageDocks       ( ToggleStruts(..)
                                                 , avoidStruts
-                                                , manageDocks
                                                 , docks
+                                                , manageDocks
                                                 )
 import           XMonad.Hooks.ManageHelpers     ( doFullFloat
                                                 , isFullscreen
@@ -130,7 +130,8 @@ myStartupHook = do
   spawnOnce "dunst"
   spawnOnce "$HOME/.xmonad/scripts/trayer.sh"
   --spawnOnce " hsetroot -solid '#2E3440'"
-  spawnOnce "feh --conversion-timeout 1 --randomize --bg-fill ~/wallpapers/Wallpapers/ --randomize --bg-fill ~/wallpapers/anime --randomize --bg-fill ~/wallpapers/Backgrounds/"
+  spawnOnce
+    "feh --conversion-timeout 1 --randomize --bg-fill ~/wallpapers/Wallpapers/ --randomize --bg-fill ~/wallpapers/anime --randomize --bg-fill ~/wallpapers/Backgrounds/"
   spawnOnce "discord"
   setWMName "LG3D"
 
