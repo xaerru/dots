@@ -249,9 +249,9 @@ myKeys =
   , ("M-s b"                 , spawn "playerctl previous")
   , ("<XF86AudioNext>"       , spawn "playerctl next")
   , ("M-s n"                 , spawn "playerctl next")
-  , ("<XF86AudioMute>", spawn "pactl set-sink-mute 0 toggle")
-  , ("<XF86AudioLowerVolume>", spawn "pactl -- set-sink-volume 0 -5%")
-  , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 0 +5%")
+  , ("<XF86AudioMute>", spawn "pactl set-sink-mute 1 toggle")
+  , ("<XF86AudioLowerVolume>", spawn "pactl -- set-sink-volume 1 -3%")
+  , ("<XF86AudioRaiseVolume>", spawn "pactl -- set-sink-volume 1 +3%")
   , ("<XF86Calculator>"      , spawn "qalculate-gtk")
   , ("<Print>", spawn "maim -su | xclip -selection clipboard -t image/png")
   , ( "C-<Print>"

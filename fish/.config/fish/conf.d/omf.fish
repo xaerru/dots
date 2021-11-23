@@ -40,10 +40,6 @@ alias la='exa -al --color=always --group-directories-first --icons'
 alias l.='exa -a | rg "^\."'
 # Get fastest mirrors
 alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist-arch"
-# Trash instead of rm
-alias rm="trash"
-alias te="trash-empty"
-alias tre="trash-restore"
 alias rg='rg --color=auto'
 # adding flags
 alias df='df -h'
