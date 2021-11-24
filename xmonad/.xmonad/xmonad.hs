@@ -177,7 +177,6 @@ myManageHook = composeAll
   , isFullscreen --> doFullFloat
   , className =? "Evince" --> doShift (myWorkspaces !! 3)
   , className =? "Element" --> doShift (myWorkspaces !! 3)
-  , className =? "discord" --> doShift (myWorkspaces !! 4)
   , className =? "Slack" --> doShift (myWorkspaces !! 5)
   , className =? "Audacious" --> doShift (myWorkspaces !! 6)
   , className =? "cmus" --> doShift (myWorkspaces !! 6)
@@ -215,6 +214,7 @@ myKeys =
   , ("M-b"                   , spawn "brave")
   , ("M-S-h"                 , spawn (myTerminal ++ " -e htop"))
   , ("M-m"                   , spawn (myTerminal ++ " --class cmus -e cmus"))
+  , ("M-S-c"                 , spawn "alacritty -e tmux new -s matrix gomuks")
   , ("M-S-x"                 , spawn "loginctl suspend")
   , ("M-a"                   , spawn "xset r rate 300 50")
   , ("M-c", spawn "colorpicker --short --one-shot --preview | xclip -selection clipboard")
