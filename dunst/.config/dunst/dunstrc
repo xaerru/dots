@@ -167,7 +167,7 @@
     max_icon_size = 64
 
     # Paths to default icons.
-    icon_path = /home/grvxs/.icons/default
+    icon_path = /home/xaerru/.icons/default
 
     ### History ###
 

@@ -10,3 +10,4 @@ session
 .stack-work
 stack.yaml.lock
 lazygit/.config/lazygit/state.yml
+fish/.config/fish/completions
