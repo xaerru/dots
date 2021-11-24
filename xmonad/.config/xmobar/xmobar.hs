@@ -51,9 +51,9 @@ config = defaultConfig
       , "5"
       ]
       30
-    , Run $ Com "/home/grvxs/.config/xmobar/scripts/song.sh" [] "music" 10
-    , Run $ Com "/home/grvxs/.config/xmobar/scripts/sound.sh" [] "sound" 1
-    , Run $ Com "/home/grvxs/.config/xmobar/scripts/trayer-padding-icon.sh" [] "trayerpad" 10
+    , Run $ Com "/home/xaerru/.config/xmobar/scripts/song.sh" [] "music" 10
+    , Run $ Com "/home/xaerru/.config/xmobar/scripts/sound.sh" [] "sound" 1
+    , Run $ Com "/home/xaerru/.config/xmobar/scripts/trayer-padding-icon.sh" [] "trayerpad" 10
     ]
   , sepChar         = "%"
   , alignSep        = "}{"
