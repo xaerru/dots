@@ -33,3 +33,4 @@ alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/mas
 alias ..="cd .."
 alias ...="cd ../.."
 . "$HOME/.cargo/env"
+eval "$(pyenv init -)"
