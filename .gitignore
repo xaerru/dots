@@ -11,3 +11,5 @@ session
 stack.yaml.lock
 lazygit/.config/lazygit/state.yml
 fish/.config/fish/completions
+
+qutebrowser/.config/qutebrowser/qsettings/QtProject.conf
