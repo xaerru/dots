@@ -180,6 +180,7 @@ myManageHook = composeAll
   , className =? "discord" --> doShift (myWorkspaces !! 4)
   , className =? "Slack" --> doShift (myWorkspaces !! 5)
   , className =? "Audacious" --> doShift (myWorkspaces !! 6)
+  , className =? "cmus" --> doShift (myWorkspaces !! 6)
   , className =? "zoom" --> doShift (myWorkspaces !! 7)
   , className =? "Virt-manager" --> doShift (myWorkspaces !! 8)
   , className =? "mpv" --> doFullFloat
@@ -213,6 +214,7 @@ myKeys =
   , ("M-i"                   , spawn myBrowser)
   , ("M-b"                   , spawn "brave")
   , ("M-S-h"                 , spawn (myTerminal ++ " -e htop"))
+  , ("M-m"                   , spawn (myTerminal ++ " --class cmus -e cmus"))
   , ("M-S-x"                 , spawn "loginctl suspend")
   , ("M-a"                   , spawn "xset r rate 300 50")
   , ("M-c", spawn "colorpicker --short --one-shot --preview | xclip -selection clipboard")
