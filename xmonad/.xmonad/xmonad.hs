@@ -177,9 +177,9 @@ myManageHook = composeAll
   , isFullscreen --> doFullFloat
   , className =? "Evince" --> doShift (myWorkspaces !! 3)
   , className =? "Element" --> doShift (myWorkspaces !! 3)
+  , className =? "discord" --> doShift (myWorkspaces !! 4)
   , className =? "Slack" --> doShift (myWorkspaces !! 5)
   , className =? "Audacious" --> doShift (myWorkspaces !! 6)
-  , className =? "cmus" --> doShift (myWorkspaces !! 6)
   , className =? "zoom" --> doShift (myWorkspaces !! 7)
   , className =? "Virt-manager" --> doShift (myWorkspaces !! 8)
   , className =? "mpv" --> doFullFloat
