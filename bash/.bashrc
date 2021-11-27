@@ -8,6 +8,7 @@
 export MANPAGER="nvim +Man!"
 export QT_QPA_PLATFORMTHEME=qt5ct
 export SHELL=/usr/bin/fish
+export GPG_TTY=$(tty)
 
 # Aliases
 alias v="nvim"

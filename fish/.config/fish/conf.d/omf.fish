@@ -18,6 +18,7 @@ export EDITOR='nvim'
 export MANPAGER="nvim +Man!"
 export SHELL=/usr/bin/fish
 export NNN_PLUG='o:fzopen;v:imgview;s:preview-tui;'
+export GPG_TTY=(tty)
 set --export NNN_FIFO "/tmp/nnn.fifo"
 
 # Aliases
