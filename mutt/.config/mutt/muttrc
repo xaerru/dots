@@ -9,6 +9,8 @@ set postponed = "+Drafts"
 set from = "xaerru@disroot.org"
 set realname = "Gauravsingh Sisodia"
 
+set sidebar_visible = yes
+
 mailboxes =Inbox =Sent =Trash =Drafts
 
 # Default index colors:
